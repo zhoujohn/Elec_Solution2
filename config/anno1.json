@@ -1,0 +1,117 @@
+{
+  "version": "3.10.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "AH17.001.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          745,
+          650
+        ],
+        [
+          877,
+          811
+        ]
+      ],
+      "shape_type": "rectangle"
+    },
+    {
+      "label": "AH17.001.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          868,
+          650
+        ],
+        [
+          984,
+          815
+        ]
+      ],
+      "shape_type": "rectangle"
+    },
+    {
+      "label": "AH17.001.YELLOW",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          976,
+          652
+        ],
+        [
+          1105,
+          819
+        ]
+      ],
+      "shape_type": "rectangle"
+    },
+    {
+      "label": "AH18.001.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1803,
+          649
+        ],
+        [
+          1932,
+          812
+        ]
+      ],
+      "shape_type": "rectangle"
+    },
+    {
+      "label": "AH18.001.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1916,
+          647
+        ],
+        [
+          2034,
+          816
+        ]
+      ],
+      "shape_type": "rectangle"
+    },
+    {
+      "label": "AH18.001.YELLOW",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2023,
+          646
+        ],
+        [
+          2151,
+          819
+        ]
+      ],
+      "shape_type": "rectangle"
+    }
+  ],
+  "lineColor": [
+    0,
+    255,
+    0,
+    128
+  ],
+  "fillColor": [
+    255,
+    0,
+    0,
+    128
+  ],
+  "imagePath": "RPI9AB14D0C1D1B.jpg",
+  "imageHeight": 2448,
+  "imageWidth": 3264
+}
