@@ -29,7 +29,7 @@ def detect_spatial_LED(inImg):
     circles = [[0,0,0]] 
     circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=40) #10,40
 
-    #circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
+    #circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
 
     if circles is None:
         print("cannot get valid value!")
@@ -144,6 +144,9 @@ def check_Hsv_LED(inImg,circles):
 ### return value:[1,'W']horizontal, [1,'H']vertical,[0,'N']no result
 ### detection region is inside 0.1~0.8
 def detect_Lockgate_Status(inImg, draw=False):
+    if inImg is None:
+        preresult = [0, 'N']
+        return preresult
 
     w = inImg.shape[1]
     h = inImg.shape[0]
@@ -169,7 +172,7 @@ def detect_Lockgate_Status(inImg, draw=False):
 
 
     img = cv2.medianBlur(gray_img, 5)
-    ret,th2 = cv2.threshold(img,120,255,cv2.THRESH_BINARY)
+    ret,th2 = cv2.threshold(img,120,255,cv2.THRESH_BINARY_INV)
     
     
 
