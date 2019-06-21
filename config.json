@@ -1,5 +1,0 @@
-{
-    "reportUrl": "http://127.0.0.1:7788/mqtt/send/offlinecache",
-    "reportTopic": "smp_realtime_645",
-    "errorTopic": "hm_error"
-}
