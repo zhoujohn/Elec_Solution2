@@ -64,7 +64,7 @@ class Device(object):
         else:
             port = 80
 
-        num, matrix = read_anno_config('./config/' + self.__urn + '.json')
+        num, matrix = read_anno_config('./config/' + self.__urn[-12:] + '.json')
 
         # get camera instance
         cam = ONVIFCamera(ip, port, '', '')
@@ -98,22 +98,22 @@ class Device(object):
         reporter = context.getContext().reporter
         # capture and detect
         while self.__rtsp.isOpened():
-            print('%s capture start...' % ip)
-            start = time.time()
-            print('start: %d' % start)
+            #print('%s capture start...' % ip)
+            #start = time.time()
+            #print('start: %d' % start)
             ret, frame = self.__rtsp.read()
-            print('capture: %d' % time.time())
+            #print('capture: %d' % time.time())
             # img = cv2.cvtColor(numpy.asarray(frame),cv2.COLOR_RGB2BGR)
-            print('convert: %d' % time.time())
-            tmp = self.__urn.split('-')
-            name = tmp[-1] + '.jpg'
-            cv2.imwrite(name, frame)
+            #print('convert: %d' % time.time())
+            #tmp = self.__urn.split('-')
+            #name = tmp[-1] + '.jpg'
+            #cv2.imwrite(name, frame)
 
             detect_result = entry_detect(frame, num, matrix)
             print(detect_result)
-            print('%s capture end %d. duration:%d' % (ip, time.time(), time.time() - start))
+            #print('%s capture end %d. duration:%d' % (ip, time.time(), time.time() - start))
             reporter.publish('hm_test', detect_result)
-            time.sleep(10)
+            time.sleep(2)
 
         
         

@@ -1,7 +1,6 @@
 import discover
 import numpy
 import cv2
-import rtsp
 from onvif import ONVIFCamera
 import urllib.parse as url
 
@@ -50,9 +49,11 @@ def main():
             'ProfileToken': '000'
         }
         res = media_service.GetStreamUri(streamSetup)
-        rtspclt = rtsp.Client(rtsp_server_uri=res.Uri)
-        content = rtspclt.read()
-        img = cv2.cvtColor(numpy.asarray(content), cv2.COLOR_RGB2BGR)
+        #rtspclt = rtsp.Client(rtsp_server_uri=res.Uri)
+        #content = rtspclt.read()
+        #img = cv2.cvtColor(numpy.asarray(content), cv2.COLOR_RGB2BGR)
+        cam = cv2.VideoCapture(res.Uri)
+        result, img = cam.read()
         tmp = info.urn.split('-')
         name = './capture/' + tmp[-1] + '.jpg'
         cv2.imwrite(name, img)

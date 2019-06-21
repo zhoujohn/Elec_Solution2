@@ -42,7 +42,7 @@ class Discover(object):
         '''
 
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.settimeout(15)
+        s.settimeout(5)
         s.sendto(probe.encode('UTF-8'), ('239.255.255.250', 3702))
         timeout = time.time() + 5
         while time.time() < timeout:
