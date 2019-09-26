@@ -50,7 +50,7 @@ def region_detect(i,j,frame,target_matrix):
     m12 = m1[1]
     #print j,counter,m0,m1,m11,m12
     rlevel = target_matrix[j][2]
-	glevel = target_matrix[j][3]
+    glevel = target_matrix[j][3]
     y0 = m11[1]
     y1 = m12[1]
     x0 = m11[0]
