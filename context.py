@@ -5,7 +5,7 @@ import logging.config
 
 logger = None
 _logs_path = '/tmp/ipcam'
-_logger_conf_file = './logger.conf'
+_logger_conf_file = 'logger.conf'
 _logger_name = 'root'
 
 
@@ -13,7 +13,8 @@ def init_logger():
     global logger
     if not os.path.exists(_logs_path):
         os.mkdir(_logs_path)
-    logging.config.fileConfig(_logger_conf_file)
+    logger_conf_path = os.path.abspath(os.path.join(os.path.dirname(__file__), _logger_conf_file))
+    logging.config.fileConfig(logger_conf_path)
     logger = logging.getLogger(_logger_name)
 
 

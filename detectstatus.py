@@ -42,7 +42,7 @@ def detect_Lockgate_Status(inImg, draw=False):
     
     #print(ret,th2 )
 
-    contours,hierarchy = cv2.findContours(th2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    th2,contours,hierarchy = cv2.findContours(th2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     if len(contours) > 0:
         for cnt in contours:
@@ -381,7 +381,8 @@ def detectstatus(src, rlevel, glevel):
         scale = 2
     else:
         scale = 1
-        
+       
+    print (w,h)
     resizeImg = cv2.resize(src, (int(scale * w), int(scale* h)), interpolation=cv2.INTER_CUBIC)
     
     light_colors = []
@@ -429,6 +430,7 @@ def detectsingle(src, type, level):
     else:
         scale = 1
         
+    print (w,h)
     resizeImg = cv2.resize(src, (int(scale * w), int(scale* h)), interpolation=cv2.INTER_CUBIC)
     
     color_index = 0

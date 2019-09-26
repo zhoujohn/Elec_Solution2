@@ -1,3 +1,4 @@
+import os
 import discover
 import device
 import time
@@ -9,7 +10,8 @@ import json
 def main():
     # __init()
     print("start...")
-    with open('./config.json', 'r') as f:
+    config_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'config.json'))
+    with open(config_path, 'r') as f:
         conf = json.load(f)
         logger.info(conf)
 
