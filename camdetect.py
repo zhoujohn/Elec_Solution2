@@ -144,8 +144,8 @@ def region_detect(i,j,frame,target_matrix):
                             r_data = r_data + 8
                         else:
                             r_data = r_data
-                     x = x - 1
-                     y = y + 1
+                    x = x - 1
+                    y = y + 1
                      #print ("lamp status data is %d", (r_data))
             else:
                 r_data = 0
