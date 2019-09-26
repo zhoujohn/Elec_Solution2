@@ -96,6 +96,11 @@ class Device(object):
         self.__rtsp = cv2.VideoCapture(res.Uri)
 
         reporter = context.getContext().reporter
+        
+        detect_result1 = {}
+        detect_result2 = {}
+        detect_result3 = {}
+        detect_result4 = {}
         # capture and detect
         while self.__rtsp.isOpened():
             #print('%s capture start...' % ip)
@@ -111,8 +116,14 @@ class Device(object):
 
             detect_result = entry_detect(frame, num, matrix)
             print(detect_result)
-            #print('%s capture end %d. duration:%d' % (ip, time.time(), time.time() - start))
-            reporter.publish('hm_test', detect_result)
+            if detect_result == detect_result1 and detect_result == detect_result2 and detect_result == detect_result3 and detect_result == detect_result4:
+                #print('%s capture end %d. duration:%d' % (ip, time.time(), time.time() - start))
+                reporter.publish('hm_test', detect_result)
+            detect_result4 == detect_result3
+            detect_result3 == detect_result2
+            detect_result2 == detect_result1
+            detect_result1 = detect_result
+            
             time.sleep(2)
 
         
