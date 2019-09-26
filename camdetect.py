@@ -43,7 +43,7 @@ def set_camera(num):
     
     return cam
 
-def region_detect(i,j,frame,target_matrix):
+def region_detect(i,j,frame,target_matrix,send_data):
     m0 = target_matrix[j][0]
     m1 = target_matrix[j][1]
     m11 = m1[0]
@@ -194,7 +194,7 @@ def entry_detect(jpgframe, target_num, target_matrix):
     j = 0
     send_data = {}
     while i:
-        m0,r_data = region_detect(i,j,frame,target_matrix)
+        m0,r_data = region_detect(i,j,frame,target_matrix,send_data)
         send_data.update({m0: r_data})
         i = i - 1
         j = j + 1
