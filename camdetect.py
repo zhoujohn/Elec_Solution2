@@ -81,74 +81,74 @@ def region_detect(i,j,frame,target_matrix):
         pos3 = m0.find("YELLOW")
         if pos1 >=0:  # GREEN
             m0 = m0[0:pos1-1]
-			tmp = send_data.get(m0)
-			if tmp == None:
-				tmp = 0
-			r_data = tmp
-			x_data = detectsingle(cropped,"GREEN",rlevel)
-			if x_data[0][1] == 'On':
-				r_data = r_data + 12
-			elif x_data[0][1] == 'Off':
-				r_data = r_data + 8
-			else:
-				r_data = r_data
+            tmp = send_data.get(m0)
+            if tmp == None:
+                tmp = 0
+            r_data = tmp
+            x_data = detectsingle(cropped,"GREEN",rlevel)
+            if x_data[0][1] == 'On':
+                r_data = r_data + 12
+            elif x_data[0][1] == 'Off':
+                r_data = r_data + 8
+            else:
+                r_data = r_data
         elif pos2 >= 0: # RED
             m0 = m0[0:pos2-1]
-			tmp = send_data.get(m0)
-			if tmp == None:
-				tmp = 0
-			r_data = tmp
-			x_data = detectsingle(cropped,"RED",rlevel)
-			if len(x_data) > 0:
-				if x_data[0][1] == 'On':
-					r_data = r_data + 3
-				elif x_data[0][1] == 'Off':
-					r_data = r_data + 2
-				else:
-					r_data = r_data
+            tmp = send_data.get(m0)
+            if tmp == None:
+                tmp = 0
+            r_data = tmp
+            x_data = detectsingle(cropped,"RED",rlevel)
+            if len(x_data) > 0:
+                if x_data[0][1] == 'On':
+                    r_data = r_data + 3
+                elif x_data[0][1] == 'Off':
+                    r_data = r_data + 2
+                else:
+                    r_data = r_data
         elif pos3 >= 0: # YELLOW
             m0 = m0[0:pos3-1]
-			tmp = send_data.get(m0)
-			if tmp == None:
-				tmp = 0
-			r_data = tmp
-			x_data = detectsingle(cropped,"YELLOW",rlevel)
-			if len(x_data) > 0:
-				if x_data[0][1] == 'On':
-					r_data = r_data + 48
-				elif x_data[0][1] == 'Off':
-					r_data = r_data + 32
-				else:
-					r_data = r_data
+            tmp = send_data.get(m0)
+            if tmp == None:
+                tmp = 0
+            r_data = tmp
+            x_data = detectsingle(cropped,"YELLOW",rlevel)
+            if len(x_data) > 0:
+                if x_data[0][1] == 'On':
+                    r_data = r_data + 48
+                elif x_data[0][1] == 'Off':
+                    r_data = r_data + 32
+                else:
+                    r_data = r_data
         else:
             r_data = 0
-			x_data = detectstatus(cropped,rlevel,glevel)
-			if x_data is not None:
-				x = len(x_data)
-				y = 0
-				while x:
-					tmp0 = x_data[y]
-					tmp1 = tmp0[0]
-					tmp2 = tmp0[1]
-					if tmp1 == 0: # red
-						if tmp2 == 'On':
-							r_data = r_data + 3
-						elif tmp2 == 'Off':
-							r_data = r_data + 2
-						else:
-							r_data = r_data
-					else: # green
-						if tmp2 == 'On':
-							r_data = r_data + 12
-						elif tmp2 == 'Off':
-							r_data = r_data + 8
-						else:
-							r_data = r_data
-					x = x - 1
-					y = y + 1
-					#print ("lamp status data is %d", (r_data))
-			else:
-				r_data = 0
+            x_data = detectstatus(cropped,rlevel,glevel)
+            if x_data is not None:
+                x = len(x_data)
+                y = 0
+                while x:
+                    tmp0 = x_data[y]
+                    tmp1 = tmp0[0]
+                    tmp2 = tmp0[1]
+                    if tmp1 == 0: # red
+                        if tmp2 == 'On':
+                            r_data = r_data + 3
+                        elif tmp2 == 'Off':
+                            r_data = r_data + 2
+                        else:
+                            r_data = r_data
+                    else: # green
+                        if tmp2 == 'On':
+                            r_data = r_data + 12
+                        elif tmp2 == 'Off':
+                            r_data = r_data + 8
+                        else:
+                            r_data = r_data
+                     x = x - 1
+                     y = y + 1
+                     #print ("lamp status data is %d", (r_data))
+            else:
+                r_data = 0
     return m0, r_data
 
 
