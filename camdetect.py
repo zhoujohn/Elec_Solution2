@@ -44,11 +44,13 @@ def set_camera(num):
     return cam
 
 def region_detect(i,j,frame,target_matrix):
-    m0 = target_matrix[j*2]
-    m1 = target_matrix[j*2+1]
+    m0 = target_matrix[j][0]
+    m1 = target_matrix[j][1]
     m11 = m1[0]
     m12 = m1[1]
     #print j,counter,m0,m1,m11,m12
+    rlevel = target_matrix[j][2]
+	glevel = target_matrix[j][3]
     y0 = m11[1]
     y1 = m12[1]
     x0 = m11[0]
@@ -79,65 +81,74 @@ def region_detect(i,j,frame,target_matrix):
         pos3 = m0.find("YELLOW")
         if pos1 >=0:  # GREEN
             m0 = m0[0:pos1-1]
-            tmp = send_data.get(m0)
-            if tmp == None:
-                tmp = 0
-            r_data = tmp + 8
-            x_data = detectsingle(cropped)
-            if len(x_data) > 0:
-                if x_data[0][1] == 'N' or x_data[0][1] == 'E':
-                    r_data = r_data
-                else:
-                    r_data = r_data + 4
+			tmp = send_data.get(m0)
+			if tmp == None:
+				tmp = 0
+			r_data = tmp
+			x_data = detectsingle(cropped,"GREEN",rlevel)
+			if x_data[0][1] == 'On':
+				r_data = r_data + 12
+			elif x_data[0][1] == 'Off':
+				r_data = r_data + 8
+			else:
+				r_data = r_data
         elif pos2 >= 0: # RED
             m0 = m0[0:pos2-1]
-            tmp = send_data.get(m0)
-            if tmp == None:
-                tmp = 0
-            r_data = tmp + 2
-            x_data = detectsingle(cropped)
-            if len(x_data) > 0:
-                if x_data[0][1] == 'N' or x_data[0][1] == 'E':
-                    r_data = r_data
-                else:
-                    r_data = r_data + 1
+			tmp = send_data.get(m0)
+			if tmp == None:
+				tmp = 0
+			r_data = tmp
+			x_data = detectsingle(cropped,"RED",rlevel)
+			if len(x_data) > 0:
+				if x_data[0][1] == 'On':
+					r_data = r_data + 3
+				elif x_data[0][1] == 'Off':
+					r_data = r_data + 2
+				else:
+					r_data = r_data
         elif pos3 >= 0: # YELLOW
             m0 = m0[0:pos3-1]
-            tmp = send_data.get(m0)
-            if tmp == None:
-                tmp = 0
-            r_data = tmp + 32
-            x_data = detectsingle(cropped)
-            if len(x_data) > 0:
-                if x_data[0][1] == 'N' or x_data[0][1] == 'E':
-                    r_data = r_data
-                else:
-                    r_data = r_data + 16
+			tmp = send_data.get(m0)
+			if tmp == None:
+				tmp = 0
+			r_data = tmp
+			x_data = detectsingle(cropped,"YELLOW",rlevel)
+			if len(x_data) > 0:
+				if x_data[0][1] == 'On':
+					r_data = r_data + 48
+				elif x_data[0][1] == 'Off':
+					r_data = r_data + 32
+				else:
+					r_data = r_data
         else:
-            r_data = 10
-            x_data = detectstatus(cropped)
-            if x_data is None:
-                r_data = 0  # default R:off, G:off
-            elif len(x_data):
-                #parse status of lamp
-                x = len(x_data)
-                y = 0
-                while x:
-                    tmp0 = x_data[y]
-                    tmp1 = tmp0[1]
-                    if tmp1 == 'R':
-                        r_data = r_data + 1
-                    elif tmp1 == 'G':
-                        r_data = r_data + 4
-                    elif tmp1 == 'E':
-                        r_data = 0
-                    else:
-                        r_data = r_data
-                    x = x - 1
-                    y = y + 1
-                    #print ("lamp status data is %d", (r_data))
-            else:
-                r_data = 0
+            r_data = 0
+			x_data = detectstatus(cropped,rlevel,glevel)
+			if x_data is not None:
+				x = len(x_data)
+				y = 0
+				while x:
+					tmp0 = x_data[y]
+					tmp1 = tmp0[0]
+					tmp2 = tmp0[1]
+					if tmp1 == 0: # red
+						if tmp2 == 'On':
+							r_data = r_data + 3
+						elif tmp2 == 'Off':
+							r_data = r_data + 2
+						else:
+							r_data = r_data
+					else: # green
+						if tmp2 == 'On':
+							r_data = r_data + 12
+						elif tmp2 == 'Off':
+							r_data = r_data + 8
+						else:
+							r_data = r_data
+					x = x - 1
+					y = y + 1
+					#print ("lamp status data is %d", (r_data))
+			else:
+				r_data = 0
     return m0, r_data
 
 
@@ -161,11 +172,11 @@ def read_anno_config(fileurl):
         load_dict = json.load(load_f)
         load_dict1 = load_dict["shapes"]
         for val in load_dict1:
+            element = [val["label"],val["points"],val["level_R"],val["level_G"]]
+            matrix.append(element)
             counter = counter + 1
             print (val)
             print (counter)
-            matrix.append(val["label"])
-            matrix.append(val["points"])
         print (matrix)
     return counter,matrix
 
