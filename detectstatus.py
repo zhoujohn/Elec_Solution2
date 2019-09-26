@@ -90,6 +90,9 @@ def detect_LED_green(inImg, level):
     elif level == 4:
         saturation = 120
         brightness = 60
+    elif level == 5:
+        saturation = 100
+        brightness = 40
     else:
         saturation = 120
         brightness = 40
@@ -221,20 +224,20 @@ def detect_LED_yellow(inImg, level):
     saturation = 130
     brightness = 60
     if level == 1:
-        saturation = 140
-        brightness = 120
+        saturation = 120
+        brightness = 150
     elif level == 2:
-        saturation = 130
-        brightness = 90
+        saturation = 120
+        brightness = 150
     elif level == 3:
         saturation = 130
-        brightness = 75
+        brightness = 130
     elif level == 4:
         saturation = 120
-        brightness = 60
+        brightness = 120
     else:
         saturation = 120
-        brightness = 40
+        brightness = 100
     rects = []
     w = inImg.shape[1]
     h = inImg.shape[0]
@@ -292,8 +295,8 @@ def check_Hsv_LED(inImg,circles,level):
     thres_zero = 120
     thres_onoff = 120
     if level == 1:
-        thres_zero = 130
-        thres_onoff = 120
+        thres_zero = 200
+        thres_onoff = 180
     elif level == 2:
         thres_zero = 120
         thres_onoff = 120
