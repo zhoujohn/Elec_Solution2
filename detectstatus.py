@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 import time
 
-cv_version = 24
+cv_version = 36
 
 
 ### input value: draw=True,show, draw=False, not show
