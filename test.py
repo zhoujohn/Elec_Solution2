@@ -1,3 +1,4 @@
+import os
 import discover
 import numpy
 import cv2
@@ -57,13 +58,13 @@ def main():
             'ProfileToken': '000'
         }
         res = media_service.GetStreamUri(streamSetup)
-        time.sleep(5)
+        #time.sleep(5)
         #rtspclt = rtsp.Client(rtsp_server_uri=res.Uri)
         #content = rtspclt.read()
         #img = cv2.cvtColor(numpy.asarray(content), cv2.COLOR_RGB2BGR)
         cam = cv2.VideoCapture(res.Uri)
         result, img = cam.read()
-        num, matrix = read_anno_config('./config/' + info.urn[-12:] + '.json')
+        num, matrix = read_anno_config(os.path.abspath(os.path.join(os.path.dirname(__file__),'config/' + info.urn[-12:] + '.json')))
         if not result:
             continue
             #if img is not None:

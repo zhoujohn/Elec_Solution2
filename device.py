@@ -1,3 +1,4 @@
+import os
 import time
 from onvif import ONVIFCamera
 import urllib.parse as url
@@ -64,7 +65,7 @@ class Device(object):
         else:
             port = 80
 
-        num, matrix = read_anno_config('./config/' + self.__urn[-12:] + '.json')
+        num, matrix = read_anno_config(os.path.abspath(os.path.join(os.path.dirname(__file__), 'config/' + self.__urn[-12:] + '.json')))
 
         # get camera instance
         cam = ONVIFCamera(ip, port, '', '')
