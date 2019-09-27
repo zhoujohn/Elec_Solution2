@@ -1,0 +1,111 @@
+{
+  "version": "3.10.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "AA15.1.HANDLE",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2,
+          579
+        ],
+        [
+          221,
+          754
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA16.1.HANDLE",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1071,
+          483
+        ],
+        [
+          1367,
+          741
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA17.1.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2188,
+          483
+        ],
+        [
+          2275,
+          593
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA17.1.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2271,
+          489
+        ],
+        [
+          2352,
+          595
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA17.1.YELLOW",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2348,
+          491
+        ],
+        [
+          2429,
+          598
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 51,
+      "level_G": 51
+    }
+  ],
+  "lineColor": [
+    0,
+    255,
+    0,
+    128
+  ],
+  "fillColor": [
+    255,
+    0,
+    0,
+    128
+  ],
+  "imagePath": "001241137960.jpg",
+  "imageHeight": 1944,
+  "imageWidth": 2592
+}

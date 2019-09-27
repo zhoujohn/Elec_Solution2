@@ -1,0 +1,327 @@
+{
+  "version": "3.10.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "AA12.1",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          598,
+          528
+        ],
+        [
+          802,
+          625
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA12.2",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          622,
+          747
+        ],
+        [
+          795,
+          835
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA12.3",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          645,
+          945
+        ],
+        [
+          820,
+          1027
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA12.4",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          697,
+          1293
+        ],
+        [
+          845,
+          1382
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 4
+    },
+    {
+      "label": "AA13.1",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1335,
+          508
+        ],
+        [
+          1518,
+          612
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 4,
+      "level_G": 2
+    },
+    {
+      "label": "AA13.2",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1343,
+          732
+        ],
+        [
+          1497,
+          825
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 1,
+      "level_G": 2
+    },
+    {
+      "label": "AA13.3",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1323,
+          945
+        ],
+        [
+          1503,
+          1032
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA13.4",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1327,
+          1295
+        ],
+        [
+          1488,
+          1380
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA13.5",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1320,
+          1458
+        ],
+        [
+          1478,
+          1537
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 4
+    },
+    {
+      "label": "AA13.6",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1313,
+          1593
+        ],
+        [
+          1467,
+          1678
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 4
+    },
+    {
+      "label": "AA13.7",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1313,
+          1718
+        ],
+        [
+          1473,
+          1800
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 4
+    },
+    {
+      "label": "AA14.1.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2092,
+          305
+        ],
+        [
+          2200,
+          417
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 11,
+      "level_G": 2
+    },
+    {
+      "label": "AA14.1.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2182,
+          308
+        ],
+        [
+          2280,
+          423
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 11,
+      "level_G": 2
+    },
+    {
+      "label": "AA14.1.YELLOW",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2270,
+          335
+        ],
+        [
+          2363,
+          430
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 51,
+      "level_G": 51
+    },
+    {
+      "label": "AA14.2.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2003,
+          1115
+        ],
+        [
+          2080,
+          1205
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA14.2.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2072,
+          1117
+        ],
+        [
+          2155,
+          1198
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 3,
+      "level_G": 2
+    },
+    {
+      "label": "AA14.2.YELLOW",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2153,
+          1117
+        ],
+        [
+          2240,
+          1200
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 51,
+      "level_G": 51
+    }
+  ],
+  "lineColor": [
+    0,
+    255,
+    0,
+    128
+  ],
+  "fillColor": [
+    255,
+    0,
+    0,
+    128
+  ],
+  "imagePath": "001241137b9e.jpg",
+  "imageHeight": 1944,
+  "imageWidth": 2592
+}
