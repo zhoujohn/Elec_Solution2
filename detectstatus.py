@@ -188,8 +188,8 @@ def detect_LED_red(inImg, level):
 
     hsv_img = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2HSV)
 
-    low_range = np.array([0, saturation, brightness])
-    high_range = np.array([5, 255, 255])
+    low_range = np.array([130, saturation, brightness])
+    high_range = np.array([180, 255, 255])
     th = cv2.inRange(hsv_img, low_range, high_range)
     dilated = cv2.dilate(th, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (8, 8)), iterations=2)
     #cv2.imshow('red', dilated)
@@ -261,7 +261,7 @@ def detect_LED_yellow(inImg, level):
     hsv_img = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2HSV)
 
     low_range = np.array([15, saturation, brightness])
-    high_range = np.array([40, 255, 255])
+    high_range = np.array([50, 255, 255])
     th = cv2.inRange(hsv_img, low_range, high_range)
     dilated = cv2.dilate(th, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (8, 8)), iterations=2)
     #cv2.imshow('yellow', dilated)
@@ -434,7 +434,7 @@ def detectstatus(src, rlevel, glevel):
 
     light_colors.append(light_color)
 
-    print (light_colors)
+    #print (light_colors)
     
     return light_colors
 
@@ -477,7 +477,7 @@ def detectsingle(src, type, level):
         light_color = [color_index, 'Err']
 
     light_colors.append(light_color)
-    print (light_colors)
+    #print (light_colors)
     
     return light_colors
 

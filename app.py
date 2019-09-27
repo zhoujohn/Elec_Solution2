@@ -1,4 +1,9 @@
-import os
+import os,sys
+sys.path.append('/home/gate001/wa/Elec_Solution')
+PATH = os.environ
+for key in PATH:
+    print (key, PATH[key])
+
 import discover
 import device
 import time
@@ -6,6 +11,7 @@ import context
 from context import logger
 import reporter
 import json
+
 
 def main():
     # __init()
