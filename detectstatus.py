@@ -128,9 +128,9 @@ def detect_LED_green(inImg, level):
   
     circles = [[0,0,0]]
     if cv_version == 24:
-    	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=40) #10,40
+    	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=60) #10,40
     else:
-    	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=40) #10,40
+    	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=60) #10,40
 
     #circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
 
@@ -166,6 +166,9 @@ def detect_LED_red(inImg, level):
     elif level == 4:
         saturation = 120
         brightness = 60
+    elif level == 61:
+        saturation = 140
+        brightness = 130
     else:
         saturation = 120
         brightness = 40
@@ -201,9 +204,9 @@ def detect_LED_red(inImg, level):
   
     circles = [[0,0,0]]
     if cv_version == 24: 
-    	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=40) #10,40
+    	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=60) #10,40
     else:
-    	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=40) #10,40
+    	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=60) #10,40
 
     #circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
 
@@ -235,6 +238,9 @@ def detect_LED_yellow(inImg, level):
     elif level == 4:
         saturation = 120
         brightness = 120
+    elif level == 51:
+        saturation = 100
+        brightness = 60
     else:
         saturation = 120
         brightness = 100
@@ -270,9 +276,9 @@ def detect_LED_yellow(inImg, level):
   
     circles = [[0,0,0]] 
     if cv_version == 24:
-    	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=40) #10,40
+    	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=60) #10,40
     else:
-    	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=40) #10,40
+    	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,50,param1=100,param2=10,minRadius=12,maxRadius=60) #10,40
 
     #circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
 
@@ -306,6 +312,12 @@ def check_Hsv_LED(inImg,circles,level):
     elif level == 4:
         thres_zero = 110
         thres_onoff = 110
+    elif level == 51:
+        thres_zero = 200
+        thres_onoff = 180
+    elif level == 61:
+        thres_zero = 80
+        thres_onoff = 50
     else:
         thres_zero = 110
         thres_onoff = 110
@@ -343,6 +355,8 @@ def check_Hsv_LED(inImg,circles,level):
 
     for cropimg in light_imgs:
         
+        if cropimg.shape[1] == 0 or cropimg.shape[0] == 0:
+            continue
         light_color = 0
         img_gray = cv2.cvtColor(cropimg, cv2.COLOR_BGR2GRAY)
         img = cv2.medianBlur(img_gray, 5)
@@ -382,7 +396,7 @@ def detectstatus(src, rlevel, glevel):
     else:
         scale = 1
        
-    print (w,h)
+    #print (w,h)
     resizeImg = cv2.resize(src, (int(scale * w), int(scale* h)), interpolation=cv2.INTER_CUBIC)
     
     light_colors = []
@@ -408,10 +422,13 @@ def detectstatus(src, rlevel, glevel):
 
     if circles is not None:
         status = check_Hsv_LED(resizeImg,circles,rlevel)
-        if status[0] == 1:
-            light_color = [0, "On"]
+        if len(status) > 0:
+            if status[0] == 1:
+                light_color = [0, "On"]
+            else:
+                light_color = [0, "Off"]
         else:
-            light_color = [0, "Off"]
+            light_color = [0, 'Err']
     else: 
         light_color = [0, 'Err']
 
@@ -430,7 +447,7 @@ def detectsingle(src, type, level):
     else:
         scale = 1
         
-    print (w,h)
+    #print (w,h)
     resizeImg = cv2.resize(src, (int(scale * w), int(scale* h)), interpolation=cv2.INTER_CUBIC)
     
     color_index = 0
@@ -449,10 +466,13 @@ def detectsingle(src, type, level):
     light_color = []
     if circles is not None:
         status = check_Hsv_LED(resizeImg,circles,level)
-        if status[0] == 1:
-            light_color = [color_index, "On"]
+        if len(status) > 0:
+            if status[0] == 1:
+                light_color = [color_index, "On"]
+            else:
+                light_color = [color_index, "Off"]
         else:
-            light_color = [color_index, "Off"]
+            light_color = [color_index, 'Err']
     else: 
         light_color = [color_index, 'Err']
 

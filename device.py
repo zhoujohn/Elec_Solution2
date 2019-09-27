@@ -15,7 +15,7 @@ class DeviceManager(object):
 
 
     def addDevices(self, deviceInfos):
-        print('[DeviceManager]addDevices()', deviceInfos)
+        #print('[DeviceManager]addDevices()', deviceInfos)
         for info in deviceInfos:
             dev = Device(info)
             self.__devices[info.urn] = dev
@@ -56,7 +56,7 @@ class Device(object):
 
     def __deviceProc(self):
         res = url.urlparse(self.__xaddr)
-        print(res)
+        #print(res)
         tmp = res[1].split(':')
         ip = tmp[0]
         if len(tmp) > 1:

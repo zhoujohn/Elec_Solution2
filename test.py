@@ -14,7 +14,7 @@ def main():
     devInfos = discovery.discover()
     for info in devInfos:
         res = url.urlparse(info.xaddr)
-        print(res)
+        #print(res)
         tmp = res[1].split(':')
         ip = tmp[0]
         if len(tmp) > 1:
@@ -35,7 +35,7 @@ def main():
         video_encoder_configuration.Encoding = 'H264'
         video_encoder_configuration.Resolution = options.H264.ResolutionsAvailable[1]
         for resolution in options.H264.ResolutionsAvailable:
-            print (resolution)
+            #print (resolution)
             if resolution["Width"] == 2592 and resolution["Height"] == 1944:
                 video_encoder_configuration.Resolution = resolution
                 print (resolution)
@@ -57,7 +57,7 @@ def main():
             'ProfileToken': '000'
         }
         res = media_service.GetStreamUri(streamSetup)
-        time.sleep(1)
+        time.sleep(5)
         #rtspclt = rtsp.Client(rtsp_server_uri=res.Uri)
         #content = rtspclt.read()
         #img = cv2.cvtColor(numpy.asarray(content), cv2.COLOR_RGB2BGR)

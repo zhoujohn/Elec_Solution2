@@ -23,7 +23,7 @@ def set_camera(num):
     width = cam.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)
     height = cam.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)
     expo = cam.get(cv2.cv.CV_CAP_PROP_EXPOSURE)
-    print ("camera width is %d, height is %d, exposure is %f" % (width,height,expo))
+    #print ("camera width is %d, height is %d, exposure is %f" % (width,height,expo))
     # read camera config file
     width,height,expo,auto = load_cam_config()
 
@@ -39,7 +39,7 @@ def set_camera(num):
     width = cam.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)
     height = cam.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)
     expo = cam.get(cv2.cv.CV_CAP_PROP_EXPOSURE)
-    print ("test camera width is %d, height is %d, exposure is %f" % (width,height,expo))
+    #print ("test camera width is %d, height is %d, exposure is %f" % (width,height,expo))
     
     return cam
 
@@ -175,9 +175,9 @@ def read_anno_config(fileurl):
             element = [val["label"],val["points"],val["level_R"],val["level_G"]]
             matrix.append(element)
             counter = counter + 1
-            print (val)
-            print (counter)
-        print (matrix)
+            #print (val)
+            #print (counter)
+        #print (matrix)
     return counter,matrix
 
 # Detection entry
