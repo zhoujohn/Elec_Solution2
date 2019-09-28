@@ -107,11 +107,12 @@ class Device(object):
         detect_result4 = {}
         # capture and detect
         while self.__rtsp.isOpened():
-            #print('%s capture start...' % ip)
+            print('%s capture startinging...' % ip)
             #start = time.time()
             #print('start: %d' % start)
             ret, frame = self.__rtsp.read()
             if not ret:
+                time.sleep(1)
                 continue
             #print('capture: %d' % time.time())
             # img = cv2.cvtColor(numpy.asarray(frame),cv2.COLOR_RGB2BGR)

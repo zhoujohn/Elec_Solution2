@@ -53,8 +53,8 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
-      "level_G": 2
+      "level_R": 3,
+      "level_G": 3
     },
     {
       "label": "AA17.1.RED",
@@ -71,8 +71,8 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
-      "level_G": 2
+      "level_R": 62,
+      "level_G": 62
     },
     {
       "label": "AA17.1.YELLOW",
