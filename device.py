@@ -130,7 +130,7 @@ class Device(object):
             detect_result2 == detect_result1
             detect_result1 = detect_result
             
-            time.sleep(2)
+            time.sleep(3)
 
         
         

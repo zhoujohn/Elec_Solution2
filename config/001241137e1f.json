@@ -35,7 +35,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 4,
+      "level_R": 2,
       "level_G": 2
     },
     {
@@ -53,7 +53,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 11,
+      "level_R": 61,
       "level_G": 2
     },
     {
@@ -71,7 +71,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 11,
+      "level_R": 2,
       "level_G": 2
     },
     {
@@ -197,7 +197,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 3,
+      "level_R": 2,
       "level_G": 2
     },
     {

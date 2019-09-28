@@ -167,6 +167,9 @@ def detect_LED_red(inImg, level):
         saturation = 120
         brightness = 60
     elif level == 61:
+        saturation = 130
+        brightness = 160
+    elif level == 62:
         saturation = 140
         brightness = 130
     else:
@@ -301,8 +304,8 @@ def check_Hsv_LED(inImg,circles,level):
     thres_zero = 120
     thres_onoff = 120
     if level == 1:
-        thres_zero = 200
-        thres_onoff = 180
+        thres_zero = 120
+        thres_onoff = 120
     elif level == 2:
         thres_zero = 120
         thres_onoff = 120
@@ -317,7 +320,10 @@ def check_Hsv_LED(inImg,circles,level):
         thres_onoff = 180
     elif level == 61:
         thres_zero = 80
-        thres_onoff = 50
+        thres_onoff = 80
+    elif level == 62:
+        thres_zero = 120
+        thres_onoff = 120
     else:
         thres_zero = 110
         thres_onoff = 110
@@ -408,10 +414,13 @@ def detectstatus(src, rlevel, glevel):
 
     if circles is not None:
         status = check_Hsv_LED(resizeImg,circles,glevel)
-        if status[0] == 1:
-            light_color = [1, "On"]
+        if len(status) > 0:
+            if status[0] == 1:
+                light_color = [1, "On"]
+            else:
+                light_color = [1, "Off"]
         else:
-            light_color = [1, "Off"]
+            light_color = [1, "Err"]
     else: 
         light_color = [1, 'Err']
 
