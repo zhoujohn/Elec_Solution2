@@ -31,7 +31,7 @@ def main():
         configurations_list = media_service.GetVideoEncoderConfigurations()
         video_encoder_configuration = configurations_list[0]
         options = media_service.GetVideoEncoderConfigurationOptions({'ProfileToken': token})
-        video_encoder_configuration.Encoding = 'H264'
+        video_encoder_configuration.Encoding = 'H265'
         video_encoder_configuration.Resolution = options.H264.ResolutionsAvailable[1]
         for resolution in options.H264.ResolutionsAvailable:
             print (resolution)
