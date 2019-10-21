@@ -24,7 +24,7 @@ class DeviceManager(object):
     def monitorProcs(self, deviceInfos):
         for info in deviceInfos:
             dev = self.__devices[info.urn]
-            if dev.isActive() == False:
+            if dev.isAlive() == False:
                 dev.restart()
 
     def stop(self):
@@ -55,14 +55,15 @@ class Device(object):
 
     def stop(self):
         if self.__proc.is_alive():
-            self.__proc.stop()
+            self.__proc.terminate()
             if self.__rtsp is not None:
-                self.__rtsp.close()
+                self.__rtsp.release()
             print('Device %s stopped...', self.__urn)
     
     def restart(self):
         if self.__rtsp is not None:
-            self.__rtsp.close()
+            self.__rtsp.release()
+        self.__proc = Process(target=self.__deviceProc, args=())
         time.sleep(1)
         self.__proc.start()
     
@@ -144,9 +145,9 @@ class Device(object):
             if not ret:
                 time.sleep(3)
                 no_frame_index += 1
-                if no_frame_index > 30 ## 90 seconds
+                if no_frame_index > 30: ## 90 seconds
                     no_frame_index = 0
-                    self.__rtsp.close()
+                    self.__rtsp.release()
                     time.sleep(1)
                     break
                 continue

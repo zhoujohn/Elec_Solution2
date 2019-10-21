@@ -58,16 +58,21 @@ def main():
         #rtspclt = rtsp.Client(rtsp_server_uri=res.Uri)
         #content = rtspclt.read()
         #img = cv2.cvtColor(numpy.asarray(content), cv2.COLOR_RGB2BGR)
-        cam = cv2.VideoCapture(res.Uri)
-        result, img = cam.read()
         tmp = info.urn.split('-')
         isExists=os.path.exists('./capture/'+tmp[-1])
         if not isExists:
             os.mkdir('./capture/' + tmp[-1])
-        name = './capture/' + tmp[-1] + '/' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '.jpg'
-        #name = './capture/' + tmp[-1] + '/' + str(datetime.datetime.now()) + '.jpg'
-        cv2.imwrite(name, img)
 
+        amount = 50
+        while amount:
+            cam = cv2.VideoCapture(res.Uri)
+            result, img = cam.read()
+            #name = './capture/' + tmp[-1] + '/' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '.jpg'
+            name = './capture/' + tmp[-1] + '/' + tmp[-1] + str(50-amount) + '.jpg'
+            #name = './capture/' + tmp[-1] + '/' + str(datetime.datetime.now()) + '.jpg'
+            cv2.imwrite(name, img)
+            amount -= 1
+            print (name, amount)
 
 if __name__ == '__main__':
         main()
