@@ -36,7 +36,8 @@ def main():
     global exit
     exit = False
     while not exit:
-        time.sleep(2)
+        time.sleep(5)
+        manager.monitorProcs(devInfos)
 
 
 if __name__ == '__main__':
