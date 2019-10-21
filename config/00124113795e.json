@@ -143,7 +143,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 2
     },
     {
@@ -233,7 +233,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 3
     },
     {
@@ -269,7 +269,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 2
     },
     {
@@ -305,8 +305,8 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 51,
-      "level_G": 51
+      "level_R": 1,
+      "level_G": 1
     },
     {
       "label": "AA6.2",
@@ -341,7 +341,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 3
     },
     {
@@ -378,7 +378,7 @@
       ],
       "shape_type": "rectangle",
       "level_R": 2,
-      "level_G": 2
+      "level_G": 61
     }
   ],
   "lineColor": [

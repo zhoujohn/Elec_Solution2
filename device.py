@@ -121,7 +121,7 @@ class Device(object):
             #print('start: %d' % start)
             ret, frame = self.__rtsp.read()
             if not ret:
-                time.sleep(1)
+                time.sleep(3)
                 continue
             #print('capture: %d' % time.time())
             # img = cv2.cvtColor(numpy.asarray(frame),cv2.COLOR_RGB2BGR)
@@ -142,5 +142,4 @@ class Device(object):
             
             time.sleep(3)
 
-        
         

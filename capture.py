@@ -3,6 +3,8 @@ import numpy
 import cv2
 from onvif import ONVIFCamera
 import urllib.parse as url
+import datetime
+import os
 
 
 def main():
@@ -59,7 +61,11 @@ def main():
         cam = cv2.VideoCapture(res.Uri)
         result, img = cam.read()
         tmp = info.urn.split('-')
-        name = './capture/' + tmp[-1] + '.jpg'
+        isExists=os.path.exists('./capture/'+tmp[-1])
+        if not isExists:
+            os.mkdir('./capture/' + tmp[-1])
+        name = './capture/' + tmp[-1] + '/' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '.jpg'
+        #name = './capture/' + tmp[-1] + '/' + str(datetime.datetime.now()) + '.jpg'
         cv2.imwrite(name, img)
 
 

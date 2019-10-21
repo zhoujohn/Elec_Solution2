@@ -53,8 +53,8 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 51,
-      "level_G": 51
+      "level_R": 1,
+      "level_G": 1
     },
     {
       "label": "AA10.1",
@@ -107,8 +107,8 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 62,
-      "level_G": 3
+      "level_R": 61,
+      "level_G": 5
     },
     {
       "label": "AA10.4",
@@ -143,7 +143,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 2
     },
     {
@@ -161,7 +161,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 2
     },
     {
@@ -216,7 +216,7 @@
       ],
       "shape_type": "rectangle",
       "level_R": 61,
-      "level_G": 2
+      "level_G": 5
     },
     {
       "label": "AA11.3",
@@ -234,7 +234,7 @@
       ],
       "shape_type": "rectangle",
       "level_R": 61,
-      "level_G": 2
+      "level_G": 5
     },
     {
       "label": "AA11.4",
@@ -287,7 +287,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 3,
+      "level_R": 61,
       "level_G": 3
     },
     {
@@ -305,7 +305,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 3,
+      "level_R": 61,
       "level_G": 4
     }
   ],

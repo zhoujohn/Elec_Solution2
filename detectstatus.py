@@ -80,7 +80,7 @@ def detect_LED_green(inImg, level):
     brightness = 40
     if level == 1:
         saturation = 43
-        brightness = 40
+        brightness = 100
     elif level == 2:
         saturation = 43
         brightness = 40
@@ -93,6 +93,9 @@ def detect_LED_green(inImg, level):
     elif level == 5:
         saturation = 43
         brightness = 20
+    elif level == 61:
+        saturation = 120
+        brightness = 120
     else:
         saturation = 43
         brightness = 40
@@ -280,7 +283,7 @@ def detect_LED_yellow(inImg, level):
     brightness = 60
     if level == 1:
         saturation = 120
-        brightness = 60
+        brightness = 30
     elif level == 2:
         saturation = 120
         brightness = 60
@@ -292,7 +295,7 @@ def detect_LED_yellow(inImg, level):
         brightness = 60
     elif level == 51:
         saturation = 100
-        brightness = 60
+        brightness = 40
     else:
         saturation = 120
         brightness = 60
@@ -440,8 +443,8 @@ def check_Hsv_LED_red(inImg,circles,level):
     #print (x,y,r)
 
 
-    if r > 8:
-        r = 8
+    if r > 12:
+        r = 12
     rect_x = (x - r)
     rect_y = (y - r)
     crop_img = resizeImg[rect_y:(y+r),rect_x:(x+r)]
@@ -717,13 +720,16 @@ def detectstatus(src, rlevel, glevel):
 
     if circles is not None:
         status = check_Hsv_LED_green(resizeImg,circles,glevel)
-        if status[0] == 1:
-            light_color = [1, "On"]
-        else:
-            light_color = [1, "Off"]
-    else: 
+        if len(status) > 0:
+            if status[0] == 1:
+                light_color = [1, "On"]
+            else:
+                light_color = [1, "Off"]
+        else: 
+            light_color = [1, 'Err']
+    else:
         light_color = [1, 'Err']
-
+        
     light_colors.append(light_color)
 
     #detect red
