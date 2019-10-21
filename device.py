@@ -14,13 +14,18 @@ class DeviceManager(object):
     def __init__(self):
         self.__devices = {}
 
-
     def addDevices(self, deviceInfos):
         #print('[DeviceManager]addDevices()', deviceInfos)
         for info in deviceInfos:
             dev = Device(info)
             self.__devices[info.urn] = dev
             dev.run()
+    
+    def monitorProcs(self, deviceInfos):
+        for info in deviceInfos:
+            dev = self.__devices[info.urn]
+            if dev.isActive() == False:
+                dev.restart()
 
     def stop(self):
         for k, v in self.__devices.items():
@@ -54,6 +59,18 @@ class Device(object):
             if self.__rtsp is not None:
                 self.__rtsp.close()
             print('Device %s stopped...', self.__urn)
+    
+    def restart(self):
+        if self.__rtsp is not None:
+            self.__rtsp.close()
+        time.sleep(1)
+        self.__proc.start()
+    
+    def isAlive(self):
+        if self.__proc.is_alive():
+            return True
+        else:
+            return False
 
     def __deviceProc(self):
         res = url.urlparse(self.__xaddr)
@@ -114,15 +131,26 @@ class Device(object):
         detect_result2 = {}
         detect_result3 = {}
         detect_result4 = {}
+        
+        no_frame_index = 0
         # capture and detect
         while self.__rtsp.isOpened():
             print('%s capture startinging...' % ip)
             #start = time.time()
             #print('start: %d' % start)
             ret, frame = self.__rtsp.read()
+            
+            ### Notice: no frame continues for 90 senconds, system will restart this process and reopen the camera to get stream
             if not ret:
                 time.sleep(3)
+                no_frame_index += 1
+                if no_frame_index > 30 ## 90 seconds
+                    no_frame_index = 0
+                    self.__rtsp.close()
+                    time.sleep(1)
+                    break
                 continue
+            no_frame_index = 0
             #print('capture: %d' % time.time())
             # img = cv2.cvtColor(numpy.asarray(frame),cv2.COLOR_RGB2BGR)
             #print('convert: %d' % time.time())
