@@ -107,8 +107,8 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 1,
-      "level_G": 2
+      "level_R": 61,
+      "level_G": 4
     },
     {
       "label": "AA13.3",
@@ -144,7 +144,7 @@
       ],
       "shape_type": "rectangle",
       "level_R": 61,
-      "level_G": 2
+      "level_G": 4
     },
     {
       "label": "AA13.5",
@@ -161,7 +161,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 4
     },
     {
@@ -179,7 +179,7 @@
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
+      "level_R": 61,
       "level_G": 5
     },
     {
@@ -188,12 +188,12 @@
       "fill_color": null,
       "points": [
         [
-          1313,
+          1322,
           1718
         ],
         [
-          1473,
-          1800
+          1432,
+          1780
         ]
       ],
       "shape_type": "rectangle",
@@ -224,16 +224,16 @@
       "fill_color": null,
       "points": [
         [
-          2182,
-          308
+          2196,
+          328
         ],
         [
-          2280,
-          423
+          2272,
+          415
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 11,
+      "level_R": 61,
       "level_G": 2
     },
     {

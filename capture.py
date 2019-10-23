@@ -63,7 +63,7 @@ def main():
         if not isExists:
             os.mkdir('./capture/' + tmp[-1])
 
-        amount = 50
+        amount = 5
         while amount:
             cam = cv2.VideoCapture(res.Uri)
             result, img = cam.read()

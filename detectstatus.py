@@ -78,9 +78,10 @@ def detect_Lockgate_Status(inImg, draw=False):
 def detect_LED_green(inImg, level):
     saturation = 43
     brightness = 40
+    param_2 = 10
     if level == 1:
         saturation = 43
-        brightness = 100
+        brightness = 40
     elif level == 2:
         saturation = 43
         brightness = 40
@@ -94,8 +95,9 @@ def detect_LED_green(inImg, level):
         saturation = 43
         brightness = 20
     elif level == 61:
-        saturation = 120
-        brightness = 120
+        saturation = 43
+        brightness = 40
+        param_2 = 16
     else:
         saturation = 43
         brightness = 40
@@ -146,9 +148,9 @@ def detect_LED_green(inImg, level):
       
         circles = [[0,0,0]]
         if cv_version == 24:
-        	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,80,param1=80,param2=12,minRadius=12,maxRadius=60) #10,40
+        	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,80,param1=80,param2=param_2,minRadius=12,maxRadius=60) #10,40
         else:
-        	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,80,param1=80,param2=12,minRadius=12,maxRadius=60) #10,40
+        	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,80,param1=80,param2=param_2,minRadius=12,maxRadius=60) #10,40
 
         #circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
 
@@ -374,8 +376,8 @@ def detect_LED_yellow(inImg, level):
 def check_Hsv_LED_red(inImg,circles,level):
     #if inImg.size == 0:
     #    return
-    thres_zero = 120
-    thres_onoff = 120
+    thres_zero = 110
+    thres_onoff = 110
     if level == 1:
         thres_zero = 120
         thres_onoff = 120
@@ -395,8 +397,11 @@ def check_Hsv_LED_red(inImg,circles,level):
         thres_zero = 80
         thres_onoff = 80
     elif level == 62:
-        thres_zero = 120
-        thres_onoff = 120
+        thres_zero = 100
+        thres_onoff = 100
+    elif level == 63:
+        thres_zero = 80
+        thres_onoff = 70
     else:
         thres_zero = 110
         thres_onoff = 110
@@ -443,11 +448,15 @@ def check_Hsv_LED_red(inImg,circles,level):
     #print (x,y,r)
 
 
-    if r > 12:
-        r = 12
-    rect_x = (x - r)
-    rect_y = (y - r)
-    crop_img = resizeImg[rect_y:(y+r),rect_x:(x+r)]
+    if r > 10:
+        rr = 10
+    else:
+        rr = r
+    rect_x = (x - rr)
+    rect_y = (y - rr)
+    crop_img = resizeImg[rect_y:(y+rr),rect_x:(x+rr)]
+
+    crop_img1 = resizeImg[(y-r):(y+r),(x-r):(x+r)]
     ## 
     #g_img = cv2.cvtColor(crop_img,cv2.COLOR_BGR2GRAY)
     #g_img = cv2.GaussianBlur(g_img,(7,7),0)
@@ -475,11 +484,11 @@ def check_Hsv_LED_red(inImg,circles,level):
             continue
         light_color = 0
         img_gray = cv2.cvtColor(cropimg, cv2.COLOR_BGR2GRAY)
-        img = cv2.medianBlur(cropimg, 5)
+        img = cv2.medianBlur(img_gray, 5)
         if img is None:
             light_colors.append(light_color)
             return light_colors
-        ret, img = cv2.threshold(img,thres_zero,255,cv2.THRESH_TOZERO)
+        #ret, img = cv2.threshold(img,thres_zero,255,cv2.THRESH_TOZERO)
   
         #cv2.imshow("gray", cropimg)
         #cv2.waitKey(2)
@@ -487,13 +496,28 @@ def check_Hsv_LED_red(inImg,circles,level):
 
         scalar = cv2.mean(img)
 
+        img_gray = cv2.cvtColor(crop_img1, cv2.COLOR_BGR2GRAY)
+        img = cv2.medianBlur(img_gray, 5)
+        #ret, img = cv2.threshold(img,thres_zero,255,cv2.THRESH_TOZERO)
+        scalar1 = cv2.mean(img)
+
         #print (scalar)
         uscalar = np.uint16(np.around(scalar))
+        uscalar1 = np.uint16(np.around(scalar1))
 
-        if uscalar[0] > thres_onoff:
+        abs_value = 0
+        if uscalar[0] > uscalar1[0]:
+            abs_value = uscalar[0] - uscalar1[0]
+        else:
+            abs_value = uscalar1[0] - uscalar[0]
+        
+        if abs_value > 30:
             light_color = 1
         else:
-            light_color = 0
+            if uscalar[0] > thres_onoff:
+                light_color = 1
+            else:
+                light_color = 0
 
         light_colors.append(light_color)
 
