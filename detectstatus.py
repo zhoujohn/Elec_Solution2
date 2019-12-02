@@ -78,6 +78,7 @@ def detect_Lockgate_Status(inImg, draw=False):
 def detect_LED_green(inImg, level):
     saturation = 43
     brightness = 40
+    hue_start = 76
     param_2 = 10
     if level == 1:
         saturation = 43
@@ -88,6 +89,7 @@ def detect_LED_green(inImg, level):
     elif level == 3:
         saturation = 43
         brightness = 40
+        hue_start = 35
     elif level == 4:
         saturation = 43
         brightness = 30
@@ -117,10 +119,10 @@ def detect_LED_green(inImg, level):
 
     hsv_img = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2HSV)
 
-    #low_range1 = np.array([60, saturation, brightness])
-    #high_range1 = np.array([96, 255, 255])
-    low_range1 = np.array([76, saturation, brightness])
+    low_range1 = np.array([hue_start, saturation, brightness])
     high_range1 = np.array([99, 255, 255])
+    #low_range1 = np.array([76, saturation, brightness])
+    #high_range1 = np.array([99, 255, 255])
     th1 = cv2.inRange(hsv_img, low_range1, high_range1)
 
     #cv2.imshow('green', th1)
@@ -155,11 +157,24 @@ def detect_LED_green(inImg, level):
         #circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
 
         #print (circles)
+        #if circles is not None:
+        x = 0
         if circles is not None:
+            #circles = np.uint16(np.around(circles))
+            for i in circles[0,:]:
+                x = i[0]
+                break
+            if x != 0:
+                break
             break
     
     if circles is not None:
         circles = np.uint16(np.around(circles))
+        for i in circles[0,:]:
+            x = i[0]
+            if x == 0:
+                circles = [[]]
+                break
         #for i in circles[0,:]:
         #    x = i[0]
         #    y = i[1]
@@ -168,8 +183,8 @@ def detect_LED_green(inImg, level):
         #cv2.imshow('xxx', resizeImg)
         #cv2.waitKey(2)
         #time.sleep(1)
-    else:
-        print("cannot get valid value!")
+    #else:
+    #    print("cannot get valid value!")
     
     #if circles != None: 
     #if circles :
@@ -181,6 +196,7 @@ def detect_LED_green(inImg, level):
 def detect_LED_red(inImg, level):
     saturation = 100
     brightness = 60
+    hough_para2 = 12
     if level == 1:
         saturation = 100
         brightness = 60
@@ -192,13 +208,20 @@ def detect_LED_red(inImg, level):
         brightness = 60
     elif level == 3:
         saturation = 100
-        brightness = 60
+        brightness = 40
+        hough_para2 = 10
     elif level == 4:
         saturation = 100
-        brightness = 60
+        brightness = 30
+        hough_para2 = 8
+    elif level == 51:
+        saturation = 100
+        brightness = 40
+        hough_para2 = 8
     elif level == 61:
         saturation = 100
-        brightness = 60
+        brightness = 40
+        hough_para2 = 8
     elif level == 62:
         saturation = 100
         brightness = 60
@@ -252,9 +275,17 @@ def detect_LED_red(inImg, level):
         if cv_version == 24: 
         	circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,80,param1=100,param2=12,minRadius=12,maxRadius=60) #10,40
         else:
-        	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,80,param1=100,param2=12,minRadius=12,maxRadius=60) #10,40
+        	circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,80,param1=100,param2=hough_para2,minRadius=12,maxRadius=60) #10,40
+        #print (circles, conv)
+        x = 0
         if circles is not None:
-            break
+            #circles = np.uint16(np.around(circles))
+            for i in circles[0,:]:
+                x = i[0]
+                break
+            if x != 0:
+                break
+
 
     #circles = cv2.HoughCircles(img,cv2.cv.CV_HOUGH_GRADIENT,1,50,param1=80,param2=30,minRadius=10,maxRadius=50)
 
@@ -262,6 +293,12 @@ def detect_LED_red(inImg, level):
     
     if circles is not None:
         circles = np.uint16(np.around(circles))
+        for i in circles[0,:]:
+            x = i[0]
+            if x == 0:
+                circles = [[]]
+                break
+            
         #for i in circles[0,:]:
         #    x = i[0]
         #    y = i[1]
@@ -271,8 +308,8 @@ def detect_LED_red(inImg, level):
         #cv2.waitKey(2)
         #time.sleep(1)
         #print (circles)
-    else:
-        print("cannot get valid value!")
+    #else:
+    #    print("cannot get valid value!")
     
     
     #print ("red circles is:",circles)
@@ -364,8 +401,8 @@ def detect_LED_yellow(inImg, level):
         #cv2.waitKey(2)
         #time.sleep(1)
         #print (circles)
-    else:
-        print("cannot get valid value!")
+    #else:
+    #    print("cannot get valid value!")
     
     
     #print ("yellow circles is:",circles)
@@ -431,34 +468,34 @@ def check_Hsv_LED_red(inImg,circles,level):
         thres_onoff_b = 60
     elif level == 2:
         thres_highest = 190
-        thres_zero = 160
+        thres_zero = 120
         thres_onoff_a = 25
         thres_onoff_b = 60
     elif level == 3:
-        thres_highest = 190
-        thres_zero = 160
-        thres_onoff_a = 25
-        thres_onoff_b = 60
+        thres_highest = 90
+        thres_zero = 56
+        thres_onoff_a = 20
+        thres_onoff_b = 50
     elif level == 4:
-        thres_highest = 190
-        thres_zero = 160
-        thres_onoff_a = 25
+        thres_highest = 100
+        thres_zero = 70
+        thres_onoff_a = 35
         thres_onoff_b = 60
     elif level == 11:
-        thres_highest = 180
-        thres_zero = 150
-        thres_onoff_a = 15
+        thres_highest = 90
+        thres_zero = 55
+        thres_onoff_a = 20
         thres_onoff_b = 50
     elif level == 51:
-        thres_highest = 190
-        thres_zero = 160
-        thres_onoff_a = 25
-        thres_onoff_b = 60
+        thres_highest = 150
+        thres_zero = 90
+        thres_onoff_a = 55
+        thres_onoff_b = 80
     elif level == 61:
         thres_highest = 160
         thres_zero = 120
-        thres_onoff_a = 25
-        thres_onoff_b = 50
+        thres_onoff_a = 35
+        thres_onoff_b = 60
     elif level == 62:
         thres_highest = 190
         thres_zero = 160
@@ -519,8 +556,9 @@ def check_Hsv_LED_red(inImg,circles,level):
     #crop_img = resizeImg[rect_y:(y+rr),rect_x:(x+rr)]
 
     crop_img1 = resizeImg[(y-r):(y+r),(x-r):(x+r)]
+    #crop_img2 = resizeImg[(y-r):(y+r),(x-r-r):(x+r+r)]
 
-    img_gray_in = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2GRAY)
+    img_gray_in = cv2.cvtColor(crop_img1, cv2.COLOR_BGR2GRAY)
     img_med = cv2.medianBlur(img_gray_in, 5)
     #ret, img = cv2.threshold(img,thres_zero,255,cv2.THRESH_TOZERO)
     scalar_med = cv2.mean(img_med)
@@ -541,12 +579,13 @@ def check_Hsv_LED_red(inImg,circles,level):
     #ret, img = cv2.threshold(img,thres_zero,255,cv2.THRESH_TOZERO)
     #scalar1 = cv2.mean(inImg)
 
-    scalar_a = choose_brightest_area(img, r, 16)
+    scalar_a = choose_brightest_area(img, r, 32)
 
-    print (scalar_a, scalar1)
+    #print (scalar_a, scalar1)
 
     ### We have a very bright environment, so we think if environment brightness is higher than max area brightness, we think light is off
     ### since if light is on, it will be over exposure regarding to environment brightness.
+    #print (scalar1, scalar_a)
     if scalar1 > scalar_a:
         light_color = 0
     else:
@@ -563,7 +602,7 @@ def check_Hsv_LED_red(inImg,circles,level):
                 light_color = 1
             else:
                 light_color = 0
-    if scalar1 > thres_highest:
+    if scalar_a > thres_highest and scalar1 > thres_zero:
         light_color = 1
 
     light_colors.append(light_color)
@@ -579,6 +618,7 @@ def check_Hsv_LED_green(inImg,circles,level):
     thres_zero = 160
     thres_onoff_a = 30
     thres_onoff_b = 60
+    thres_onoff_c = 15
     if level == 1:
         thres_highest = 190
         thres_zero = 160
@@ -586,9 +626,10 @@ def check_Hsv_LED_green(inImg,circles,level):
         thres_onoff_b = 60
     elif level == 2:
         thres_highest = 190
-        thres_zero = 160
+        thres_zero = 130
         thres_onoff_a = 30
-        thres_onoff_b = 70
+        thres_onoff_b = 60
+        thres_onoff_c = 30
     elif level == 3:
         thres_highest = 190
         thres_zero = 160
@@ -693,7 +734,7 @@ def check_Hsv_LED_green(inImg,circles,level):
 
     scalar_a = choose_brightest_area(img, r, 16)
 
-    print (scalar_a, scalar1)
+    #print (scalar1, scalar_a)
 
     ### We have a very bright environment, so we think if environment brightness is higher than max area brightness, we think light is off
     ### since if light is on, it will be over exposure regarding to environment brightness.
@@ -713,8 +754,8 @@ def check_Hsv_LED_green(inImg,circles,level):
                 light_color = 1
             else:
                 light_color = 0
-    if scalar1 > thres_highest:
-        light_color = 1
+        if scalar_a > thres_highest and (scalar_a - scalar1) > thres_onoff_c:
+            light_color = 1
 
     light_colors.append(light_color)
 
@@ -843,7 +884,7 @@ def check_Hsv_LED_yellow(inImg,circles,level):
 
     scalar_a = choose_brightest_area(img, r, 16)
 
-    print (scalar_a, scalar1)
+    #print (scalar_a, scalar1)
 
     ### We have a very bright environment, so we think if environment brightness is higher than max area brightness, we think light is off
     ### since if light is on, it will be over exposure regarding to environment brightness.
@@ -894,7 +935,7 @@ def detectstatus(src, rlevel, glevel):
     # detect green
     circles = detect_LED_green(resizeImg,glevel)
 
-    if circles is not None:
+    if circles is not None and len(circles[0]) != 0:
         status = check_Hsv_LED_green(resizeImg,circles,glevel)
         if len(status) > 0:
             if status[0] == 1:
@@ -911,7 +952,7 @@ def detectstatus(src, rlevel, glevel):
     #detect red
     circles = detect_LED_red(resizeImg,rlevel)
 
-    if circles is not None:
+    if circles is not None and len(circles[0]) != 0:
         status = check_Hsv_LED_red(resizeImg,circles,rlevel)
         if len(status) > 0:
             if status[0] == 1:
@@ -954,7 +995,7 @@ def detectsingle(src, type, level):
 
     light_colors = []
     light_color = []
-    if circles is not None:
+    if circles is not None and len(circles[0]) != 0:
         if type == "GREEN":
             status = check_Hsv_LED_green(resizeImg,circles,level)
         elif type == "YELLOW":
@@ -1040,11 +1081,11 @@ def detect_LED_gray(src):
             y = i[1]
             r = i[2]
             cv2.circle(resizeImg,(x,y),r,(0,0,255),-1)
-        cv2.imshow('xxx', resizeImg)
-        cv2.waitKey(2)
-        time.sleep(1)
-    else:
-        print("cannot get valid value!")
+        #cv2.imshow('xxx', resizeImg)
+        #cv2.waitKey(2)
+        #time.sleep(1)
+    #else:
+    #    print("cannot get valid value!")
     
     #if circles != None: 
     #if circles :
