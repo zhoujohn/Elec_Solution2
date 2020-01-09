@@ -35,9 +35,31 @@ def main():
     manager.addDevices(devInfos)
     global exit
     exit = False
+
+    loop_index = 0
     while not exit:
         time.sleep(5)
         manager.monitorProcs(devInfos)
+        loop_index++
+        if loop_index > 60:
+            loop_index = 0
+            devInfos = refresh(manager, devInfos)
+
+
+def refresh(manager, devInfos):
+    devInfos_dynamic = discovery.discover()
+    if len(devInfos_dynamic) != len(devInfos):
+        ###find difference
+        for devi in devInfors_dynamic:
+            not_new = 1
+            for devi_o in devInfos:
+                if devi_o.urn == devi.urn:
+                    not_new = 0
+                    break
+            if not_new == 1:
+                manager.addDevices(devi)
+    return devInfos_dynamic
+
 
 
 if __name__ == '__main__':
