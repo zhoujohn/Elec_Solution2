@@ -654,7 +654,7 @@ def check_Hsv_LED_green(inImg,circles,level):
         thres_highest = 190
         thres_zero = 160
         thres_onoff_a = 30
-        thres_onoff_b = 60
+        thres_onoff_b = 40
     else:
         thres_highest = 190
         thres_zero = 160
