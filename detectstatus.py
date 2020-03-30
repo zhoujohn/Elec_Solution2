@@ -214,6 +214,9 @@ def detect_LED_red(inImg, level):
         saturation = 100
         brightness = 30
         hough_para2 = 8
+    elif level == 5:
+        saturation = 100
+        brightness = 60
     elif level == 51:
         saturation = 100
         brightness = 40
@@ -485,6 +488,11 @@ def check_Hsv_LED_red(inImg,circles,level):
         thres_zero = 70
         thres_onoff_a = 35
         thres_onoff_b = 60
+    elif level == 5:
+        thres_highest = 100
+        thres_zero = 70
+        thres_onoff_a = 14
+        thres_onoff_b = 13
     elif level == 11:
         thres_highest = 90
         thres_zero = 55
