@@ -66,7 +66,7 @@ def region_detect(i,j,frame,target_matrix,send_data):
     hand1 = m0.find("HANDLE")
     if hand1 >= 0:
         m0 = m0[0:hand1-1]
-        x_data = detecthandle(cropped)
+        x_data = detecthandle(cropped,rlevel)
         if x_data[0] == 1:
             if x_data[1] == 'W':
                 r_data = 0xC0

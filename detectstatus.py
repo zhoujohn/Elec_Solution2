@@ -8,7 +8,7 @@ cv_version = 36
 ### input value: draw=True,show, draw=False, not show
 ### return value:[1,'W']horizontal, [1,'H']vertical,[0,'N']no result
 ### detection region is inside 0.1~0.8
-def detect_Lockgate_Status(inImg, draw=False):
+def detect_Lockgate_Status(inImg, rlevel, draw=False):
     if inImg is None:
         preresult = [0, 'N']
         return preresult
@@ -35,9 +35,16 @@ def detect_Lockgate_Status(inImg, draw=False):
     else:
         gray_img = np.copy(resizeImg)
 
+    low_thres = 90
+    if rlevel == 2:
+        low_thres = 90
+    elif rlevel == 3:
+        low_thres = 110
+    else:
+        low_thres = 90
 
     img = cv2.medianBlur(gray_img, 5)
-    ret,th2 = cv2.threshold(img,90,255,cv2.THRESH_BINARY_INV)
+    ret,th2 = cv2.threshold(img,low_thres,255,cv2.THRESH_BINARY_INV)
     
     
     #print(ret,th2 )
@@ -79,6 +86,7 @@ def detect_LED_green(inImg, level):
     saturation = 43
     brightness = 40
     hue_start = 76
+    hue_end = 99
     param_2 = 10
     if level == 1:
         saturation = 43
@@ -96,6 +104,21 @@ def detect_LED_green(inImg, level):
     elif level == 5:
         saturation = 43
         brightness = 20
+    elif level == 51:
+        saturation = 30
+        brightness = 10
+        hue_start = 50
+        hue_end = 120
+    elif level == 52:
+        saturation = 30
+        brightness = 10
+        hue_start = 50
+        hue_end = 140
+    elif level == 53:
+        saturation = 30
+        brightness = 10
+        hue_start = 60
+        hue_end = 120
     elif level == 61:
         saturation = 43
         brightness = 40
@@ -120,7 +143,7 @@ def detect_LED_green(inImg, level):
     hsv_img = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2HSV)
 
     low_range1 = np.array([hue_start, saturation, brightness])
-    high_range1 = np.array([99, 255, 255])
+    high_range1 = np.array([hue_end, 255, 255])
     #low_range1 = np.array([76, saturation, brightness])
     #high_range1 = np.array([99, 255, 255])
     th1 = cv2.inRange(hsv_img, low_range1, high_range1)
@@ -661,7 +684,17 @@ def check_Hsv_LED_green(inImg,circles,level):
         thres_highest = 190
         thres_zero = 160
         thres_onoff_a = 30
+        thres_onoff_b = 20
+    elif level == 52:
+        thres_highest = 190
+        thres_zero = 160
+        thres_onoff_a = 30
         thres_onoff_b = 60
+    elif level == 53:
+        thres_highest = 120
+        thres_zero = 90
+        thres_onoff_a = 12
+        thres_onoff_b = 10
     elif level == 61:
         thres_highest = 190
         thres_zero = 160
@@ -728,7 +761,11 @@ def check_Hsv_LED_green(inImg,circles,level):
 
     crop_img1 = resizeImg[(y-r):(y+r),(x-r):(x+r)]
 
-    img_gray_in = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2GRAY)
+    if level == 53:
+        img_gray_in = cv2.cvtColor(crop_img1, cv2.COLOR_BGR2GRAY)
+    else:
+        img_gray_in = cv2.cvtColor(resizeImg, cv2.COLOR_BGR2GRAY)
+
     img_med = cv2.medianBlur(img_gray_in, 5)
     #ret, img = cv2.threshold(img,thres_zero,255,cv2.THRESH_TOZERO)
     scalar_med = cv2.mean(img_med)
@@ -1146,7 +1183,7 @@ def test():
     time.sleep(15)
 
 
-def detecthandle(src):
+def detecthandle(src, rlevel):
     w = src.shape[1]
     h = src.shape[0]
     if h < 100:
@@ -1156,7 +1193,7 @@ def detecthandle(src):
 
     resizeImg = cv2.resize(src, (int(scale * w), int(scale* h)), interpolation=cv2.INTER_CUBIC)
 
-    result = detect_Lockgate_Status(resizeImg,draw = False)
+    result = detect_Lockgate_Status(resizeImg,rlevel,draw = False)
 
     return result
 
