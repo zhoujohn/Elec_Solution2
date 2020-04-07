@@ -63,16 +63,20 @@ def main():
         if not isExists:
             os.mkdir('./capture/' + tmp[-1])
 
-        amount = 5
-        while amount:
-            cam = cv2.VideoCapture(res.Uri)
-            result, img = cam.read()
-            #name = './capture/' + tmp[-1] + '/' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '.jpg'
-            name = './capture/' + tmp[-1] + '/' + tmp[-1] + str(50-amount) + '.jpg'
-            #name = './capture/' + tmp[-1] + '/' + str(datetime.datetime.now()) + '.jpg'
-            cv2.imwrite(name, img)
-            amount -= 1
-            print (name, amount)
+        amount = 1
+        start = 1
+        if tmp[-1] == '001241443e06':
+            start = 1
+        if start == 1:
+            while amount:
+                cam = cv2.VideoCapture(res.Uri)
+                result, img = cam.read()
+                #name = './capture/' + tmp[-1] + '/' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') + '.jpg'
+                name = './capture/' + tmp[-1] + '/' + tmp[-1] + str(50-amount) + '.jpg'
+                #name = './capture/' + tmp[-1] + '/' + str(datetime.datetime.now()) + '.jpg'
+                cv2.imwrite(name, img)
+                amount -= 1
+                print (name, amount)
 
 if __name__ == '__main__':
         main()

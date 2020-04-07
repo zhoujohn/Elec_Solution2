@@ -40,6 +40,8 @@ def detect_Lockgate_Status(inImg, rlevel, draw=False):
         low_thres = 90
     elif rlevel == 3:
         low_thres = 110
+    elif rlevel == 4:
+        low_thres = 140
     else:
         low_thres = 90
 
@@ -119,6 +121,16 @@ def detect_LED_green(inImg, level):
         brightness = 10
         hue_start = 60
         hue_end = 120
+    elif level == 54:
+        saturation = 30
+        brightness = 0
+        hue_start = 40
+        hue_end = 148
+    elif level == 55:
+        saturation = 50
+        brightness = 40
+        hue_start = 70
+        hue_end = 148
     elif level == 61:
         saturation = 43
         brightness = 40
@@ -695,6 +707,16 @@ def check_Hsv_LED_green(inImg,circles,level):
         thres_zero = 90
         thres_onoff_a = 12
         thres_onoff_b = 10
+    elif level == 54:
+        thres_highest = 190
+        thres_zero = 160
+        thres_onoff_a = 60
+        thres_onoff_b = 80
+    elif level == 55:
+        thres_highest = 190
+        thres_zero = 160
+        thres_onoff_a = 30
+        thres_onoff_b = 60
     elif level == 61:
         thres_highest = 190
         thres_zero = 160

@@ -3,310 +3,328 @@
   "flags": {},
   "shapes": [
     {
-      "label": "AA9.1.GREEN",
+      "label": "AA23.1.HANDLE",
       "line_color": null,
       "fill_color": null,
       "points": [
         [
-          500,
-          527
+          227,
+          178
         ],
         [
-          583,
-          614
+          511,
+          358
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 2,
-      "level_G": 2
-    },
-    {
-      "label": "AA9.1.RED",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          573,
-          518
-        ],
-        [
-          669,
-          614
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 2,
-      "level_G": 2
-    },
-    {
-      "label": "AA9.1.YELLOW",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          656,
-          514
-        ],
-        [
-          775,
-          610
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 1,
-      "level_G": 1
-    },
-    {
-      "label": "AA10.1",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          1710,
-          550
-        ],
-        [
-          1865,
-          650
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA10.2",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          1688,
-          783
-        ],
-        [
-          1848,
-          883
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA10.3",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          1671,
-          991
-        ],
-        [
-          1838,
-          1087
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 5
-    },
-    {
-      "label": "AA10.4",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          1656,
-          1189
-        ],
-        [
-          1789,
-          1268
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA10.5",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          1644,
-          1360
-        ],
-        [
-          1779,
-          1437
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA10.6",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          1627,
-          1514
-        ],
-        [
-          1760,
-          1585
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA10.7",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          1625,
-          1650
-        ],
-        [
-          1745,
-          1716
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA11.1",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          2342,
-          602
-        ],
-        [
-          2508,
-          693
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA11.2",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          2329,
-          806
-        ],
-        [
-          2486,
-          910
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 5
-    },
-    {
-      "label": "AA11.3",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          2310,
-          1010
-        ],
-        [
-          2420,
-          1084
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 5
-    },
-    {
-      "label": "AA11.4",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          2280,
-          1190
-        ],
-        [
-          2382,
-          1260
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA11.5",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          2241,
-          1341
- 	],
-        [
-          2373,
-          1422
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 2
-    },
-    {
-      "label": "AA11.6",
-      "line_color": null,
-      "fill_color": null,
-      "points": [
-        [
-          2192,
-          1493
-        ],
-        [
-          2329,
-          1566
-        ]
-      ],
-      "shape_type": "rectangle",
-      "level_R": 61,
+      "level_R": 3,
       "level_G": 3
     },
     {
-      "label": "AA11.7",
+      "label": "AA24.1.RED",
       "line_color": null,
       "fill_color": null,
       "points": [
         [
-          2169,
-          1627
+          846,
+          461
         ],
         [
-          2292,
-          1695
+          927,
+          538
         ]
       ],
       "shape_type": "rectangle",
-      "level_R": 61,
-      "level_G": 4
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA24.1.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          919,
+          461
+        ],
+        [
+          998,
+          535
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA25.1",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1575,
+          136
+        ],
+        [
+          1696,
+          223
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA25.2",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1565,
+          305
+        ],
+        [
+          1679,
+          390
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA25.3",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1546,
+          471
+        ],
+        [
+          1669,
+          552
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA25.4",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1523,
+          621
+        ],
+        [
+          1654,
+          696
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA25.5",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1511,
+          767
+        ],
+        [
+          1633,
+          838
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA25.6",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1502,
+          900
+        ],
+        [
+          1617,
+          971
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 51
+    },
+    {
+      "label": "AA25.7",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1490,
+          1030
+        ],
+        [
+          1596,
+          1102
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 51,
+      "level_G": 54
+    },
+    {
+      "label": "AA26.1",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2063,
+          155
+        ],
+        [
+          2192,
+          244
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA26.2",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2038,
+          321
+        ],
+        [
+          2161,
+          400
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA26.3",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2006,
+          469
+        ],
+        [
+          2138,
+          554
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA26.4",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1981,
+          623
+        ],
+        [
+          2102,
+          696
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA26.5",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1965,
+          761
+        ],
+        [
+          2077,
+          835
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA26.6",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1940,
+          892
+        ],
+        [
+          2054,
+          960
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA26.7",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1915,
+          1017
+        ],
+        [
+          2021,
+          1085
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 54
+    },
+    {
+      "label": "AA26.8",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1886,
+          1136
+        ],
+        [
+          2004,
+          1200
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 54
     }
   ],
   "lineColor": [
@@ -321,7 +339,7 @@
     0,
     128
   ],
-  "imagePath": "001241137e37.jpg",
+  "imagePath": "001241442d410.jpg",
   "imageHeight": 1944,
   "imageWidth": 2592
 }

@@ -1,0 +1,219 @@
+{
+  "version": "3.10.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "AA13.1.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          913,
+          1208
+        ],
+        [
+          993,
+          1277
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA13.1.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          990,
+          1212
+        ],
+        [
+          1065,
+          1273
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 52,
+      "level_G": 52
+    },
+    {
+      "label": "AA14.1",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1607,
+          902
+        ],
+        [
+          1730,
+          973
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA14.2",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1610,
+          1068
+        ],
+        [
+          1723,
+          1133
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 52
+    },
+    {
+      "label": "AA14.3",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1598,
+          1228
+        ],
+        [
+          1723,
+          1297
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 53
+    },
+    {
+      "label": "AA14.4",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1602,
+          1385
+        ],
+        [
+          1720,
+          1443
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 51,
+      "level_G": 52
+    },
+    {
+      "label": "AA14.5",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1602,
+          1528
+        ],
+        [
+          1720,
+          1595
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 51,
+      "level_G": 51
+    },
+    {
+      "label": "AA14.6",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1602,
+          1673
+        ],
+        [
+          1715,
+          1733
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 3,
+      "level_G": 51
+    },
+    {
+      "label": "AA14.7",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1595,
+          1807
+        ],
+        [
+          1713,
+          1867
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 51,
+      "level_G": 51
+    },
+    {
+      "label": "AA15.1.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1922,
+          1215
+        ],
+        [
+          1997,
+          1280
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 2,
+      "level_G": 2
+    },
+    {
+      "label": "AA15.1.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1987,
+          1217
+        ],
+        [
+          2065,
+          1282
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 52,
+      "level_G": 52
+    }
+  ],
+  "lineColor": [
+    0,
+    255,
+    0,
+    128
+  ],
+  "fillColor": [
+    255,
+    0,
+    0,
+    128
+  ],
+  "imagePath": "001241443d3548.jpg",
+  "imageHeight": 1944,
+  "imageWidth": 2592
+}

@@ -42,9 +42,9 @@ class Discover(object):
         '''
 
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.settimeout(20)
+        s.settimeout(25)
         s.sendto(probe.encode('UTF-8'), ('239.255.255.250', 3702))
-        timeout = time.time() + 40
+        timeout = time.time() + 35
         while time.time() < timeout:
             try:
                 buf = s.recv(4096)
@@ -74,5 +74,5 @@ class Discover(object):
         while True:
             devices = self.discover()
             print(devices)
-            time.sleep(10)
+            time.sleep(15)
         pass

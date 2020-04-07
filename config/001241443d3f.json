@@ -1,0 +1,93 @@
+{
+  "version": "3.10.1",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "AA38.1.HANDLE",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          357,
+          645
+        ],
+        [
+          580,
+          818
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 3,
+      "level_G": 3
+    },
+    {
+      "label": "AA39.1.HANDLE",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          1062,
+          667
+        ],
+        [
+          1268,
+          835
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 3,
+      "level_G": 3
+    },
+    {
+      "label": "AA40.1.RED",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2010,
+          1232
+        ],
+        [
+          2085,
+          1292
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 3,
+      "level_G": 3
+    },
+    {
+      "label": "AA40.1.GREEN",
+      "line_color": null,
+      "fill_color": null,
+      "points": [
+        [
+          2080,
+          1233
+        ],
+        [
+          2147,
+          1290
+        ]
+      ],
+      "shape_type": "rectangle",
+      "level_R": 52,
+      "level_G": 52
+    }
+  ],
+  "lineColor": [
+    0,
+    255,
+    0,
+    128
+  ],
+  "fillColor": [
+    255,
+    0,
+    0,
+    128
+  ],
+  "imagePath": "001241443d3f48.jpg",
+  "imageHeight": 1944,
+  "imageWidth": 2592
+}
