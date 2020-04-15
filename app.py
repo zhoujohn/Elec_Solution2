@@ -50,7 +50,7 @@ def refresh(manager, devInfos):
     devInfos_dynamic = discovery.discover()
     #if len(devInfos_dynamic) != len(devInfos):
     ###find difference
-    for devi in devInfors_dynamic:
+    for devi in devInfos_dynamic:
         is_new = 1
         for devi_o in devInfos:
             if devi_o.urn == devi.urn and devi_o.xaddr == devi.xaddr:
