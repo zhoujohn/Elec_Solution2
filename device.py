@@ -69,7 +69,7 @@ class Device(object):
         if self.__rtsp is not None:
             self.__rtsp.release()
         self.__proc = Process(target=self.__deviceProc, args=())
-        time.sleep(1)
+        #time.sleep(1)
         self.__proc.start()
     
     def isAlive(self):
