@@ -21,6 +21,11 @@ class DeviceManager(object):
             self.__devices[info.urn] = dev
             dev.run()
     
+    def addDevice(self, info):
+        dev = Device(info)
+        self.__devices[info.urn] = dev
+        dev.run()
+    
     def monitorProcs(self, deviceInfos):
         for info in deviceInfos:
             dev = self.__devices[info.urn]
