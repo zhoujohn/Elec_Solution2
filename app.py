@@ -57,7 +57,7 @@ def refresh(manager, devInfos):
                 is_new = 0
                 break
         if is_new == 1:
-            manager.addDevices(devi)
+            manager.addDevice(devi)
     return devInfos_dynamic
 
 
