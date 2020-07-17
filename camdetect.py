@@ -236,15 +236,15 @@ def save_image_region(element, urn):
 def save_image_from_diff(jpgframe, target_matrix, element, index, urn):
     for ele in target_matrix:
         if index == 0:
-            if ele[0] == element || ele[0] == element+'.RED':
+            if ele[0] == element or ele[0] == element+'.RED':
                 save_image_region(ele, urn)
         elif index == 1:
-            if ele[0] == element || ele[0] == element+'.GREEN':
+            if ele[0] == element or ele[0] == element+'.GREEN':
                 save_image_region(ele, urn)
         elif index == 2:
-            if ele[0] == element || ele[0] == element+'.YELLOW':
+            if ele[0] == element or ele[0] == element+'.YELLOW':
                 save_image_region(ele, urn)
         elif index == 3:
-            if ele[0] == element || ele[0] == element+'.HANDLE':
+            if ele[0] == element or ele[0] == element+'.HANDLE':
                 save_image_region(ele, urn)
     return
