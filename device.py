@@ -176,7 +176,7 @@ class Device(object):
             detect_result1 = detect_result
 
             # verify the difference between present result and previous result
-            if detect_result1 != detect_result2:
+            if detect_result1 != detect_result2 and len(detect_result2) != 0:
                 # find the different ones
                 for ele in detect_result1:
                     v1 = detect_result1[ele]
