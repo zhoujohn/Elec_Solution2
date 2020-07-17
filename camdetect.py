@@ -226,8 +226,11 @@ def save_image_region(element, urn):
     x1 = m12[0]
     #print y0,y1,x0,x1
     img = frame[y0:y1,x0:x1]
-    name = './exception/' + urn + '/' + name + datetime.datetime.now().strftime('%Y%m%d%H-%M-%S') + '.jpg'
-    cv2.imwrite(name, img)
+    isExists=os.path.exists('./exception/' + name)
+    if not isExists:
+        os.mkdir('./exception/' + tmp[-1])
+    filename = './exception/' + urn + '/' + name + datetime.datetime.now().strftime('%Y%m%d%H-%M-%S') + '.jpg'
+    cv2.imwrite(filename, img)
 
 
 def save_image_from_diff(jpgframe, target_matrix, element, index, urn):
