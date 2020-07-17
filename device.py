@@ -5,7 +5,7 @@ import urllib.parse as url
 from multiprocessing import Process
 import context
 import cv2
-from camdetect import read_anno_config, entry_detect, release_detect
+from camdetect import read_anno_config, entry_detect, release_detect, save_image_from_diff
 
 
 
@@ -29,8 +29,8 @@ class DeviceManager(object):
     def monitorProcs(self, deviceInfos):
         for info in deviceInfos:
             dev = self.__devices[info.urn]
-            if dev.isAlive() == False:
-                dev.restart()
+            if dev.isAlive() is False:
+                proc = dev.restart()
 
     def stop(self):
         for k, v in self.__devices.items():
@@ -89,6 +89,7 @@ class Device(object):
             port = 80
 
         num, matrix = read_anno_config(os.path.abspath(os.path.join(os.path.dirname(__file__), 'config/' + self.__urn[-12:] + '.json')))
+        local_urn = self.__urn[-12:]
 
         retry = 5
 
@@ -173,6 +174,24 @@ class Device(object):
             detect_result3 = detect_result2
             detect_result2 = detect_result1
             detect_result1 = detect_result
+
+            # verify the difference between present result and previous result
+            if detect_result1 != detect_result2:
+                # find the different ones
+                for ele in detect_result1:
+                    v1 = detect_result1[ele]
+                    v2 = detect_result2[ele]
+                    if v2 != v1:
+                        # check r,g,y difference
+                        if v2&0x03 != v1&0x03:
+                            save_image_from_diff(frame, matrix, ele, 0, local_urn)
+                        if v2&0x0c != v1&0x0c:
+                            save_image_from_diff(frame, matrix, ele, 1, local_urn)
+                        if v2&0x30 != v1&0x30:
+                            save_image_from_diff(frame, matrix, ele, 2, local_urn)
+                        if v2&0xc0 != v1&0xc0:
+                            save_image_from_diff(frame, matrix, ele, 3, local_urn)
+                    #print (v,v1)
             
             time.sleep(3)
 

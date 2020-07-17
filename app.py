@@ -53,7 +53,7 @@ def refresh(manager, devInfos):
     for devi in devInfos_dynamic:
         is_new = 1
         for devi_o in devInfos:
-            if devi_o.urn == devi.urn and devi_o.xaddr == devi.xaddr:
+            if devi_o.urn == devi.urn: # and devi_o.xaddr == devi.xaddr:
                 is_new = 0
                 break
         if is_new == 1:

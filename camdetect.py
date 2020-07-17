@@ -1,6 +1,7 @@
 
 import cv2
 import time
+import datetime
 import json
 from detectstatus import detectstatus, detectsingle, detecthandle
 
@@ -212,3 +213,35 @@ def entry_detect(jpgframe, target_num, target_matrix):
 def release_detect():
     cv2.destroyAllWindows()
     time.sleep(2)   #delay 2s
+
+def save_image_region(element, urn):
+    name = element[0]
+    m1 = element[1]
+    m11 = m1[0]
+    m12 = m1[1]
+
+    y0 = m11[1]
+    y1 = m12[1]
+    x0 = m11[0]
+    x1 = m12[0]
+    #print y0,y1,x0,x1
+    img = frame[y0:y1,x0:x1]
+    name = './exception/' + urn + '/' + name + datetime.datetime.now().strftime('%Y%m%d%H-%M-%S') + '.jpg'
+    cv2.imwrite(name, img)
+
+
+def save_image_from_diff(jpgframe, target_matrix, element, index, urn):
+    for ele in target_matrix:
+        if index == 0:
+            if ele[0] == element || ele[0] == element+'.RED':
+                save_image_region(ele, urn)
+        elif index == 1:
+            if ele[0] == element || ele[0] == element+'.GREEN':
+                save_image_region(ele, urn)
+        elif index == 2:
+            if ele[0] == element || ele[0] == element+'.YELLOW':
+                save_image_region(ele, urn)
+        elif index == 3:
+            if ele[0] == element || ele[0] == element+'.HANDLE':
+                save_image_region(ele, urn)
+    return
