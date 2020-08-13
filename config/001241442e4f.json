@@ -1,0 +1,114 @@
+{
+  "version": "4.5.6",
+  "flags": {},
+  "shapes": [
+    {
+      "label": "AA3.1.HANDLE",
+      "points": [
+        [
+          229.3404255319149,
+          643.3191489361702
+        ],
+        [
+          688.9148936170211,
+          964.595744680851
+        ]
+      ],
+      "level_R": 0,
+      "level_G": 0,
+      "bright_RR": 200,
+      "bright_RG": 0,
+      "bright_RB": 100,
+      "bright_GR": 100,
+      "bright_GG": 200,
+      "bright_GB": 0
+    },
+    {
+      "label": "AA4.1.GREEN",
+      "points": [
+        [
+          1133.5957446808509,
+          413.531914893617
+        ],
+        [
+          1308.063829787234,
+          541.1914893617021
+        ]
+      ],
+      "level_R": 0,
+      "level_G": 0,
+      "bright_RR": 200,
+      "bright_RG": 0,
+      "bright_RB": 100,
+      "bright_GR": 100,
+      "bright_GG": 200,
+      "bright_GB": 0
+    },
+    {
+      "label": "AA4.1.RED",
+      "points": [
+        [
+          1303.8085106382978,
+          405.02127659574467
+        ],
+        [
+          1518.7021276595744,
+          534.8085106382979
+        ]
+      ],
+      "level_R": 0,
+      "level_G": 0,
+      "bright_RR": 200,
+      "bright_RG": 0,
+      "bright_RB": 100,
+      "bright_GR": 100,
+      "bright_GG": 200,
+      "bright_GB": 0
+    },
+    {
+      "label": "AA5.1.GREEN",
+      "points": [
+        [
+          2091.0425531914893,
+          407.1489361702127
+        ],
+        [
+          2254.8723404255315,
+          532.6808510638298
+        ]
+      ],
+      "level_R": 0,
+      "level_G": 0,
+      "bright_RR": 200,
+      "bright_RG": 0,
+      "bright_RB": 100,
+      "bright_GR": 100,
+      "bright_GG": 200,
+      "bright_GB": 0
+    },
+    {
+      "label": "AA5.1.RED",
+      "points": [
+        [
+          2246.3617021276596,
+          405.02127659574467
+        ],
+        [
+          2427.2127659574467,
+          539.063829787234
+        ]
+      ],
+      "level_R": 0,
+      "level_G": 0,
+      "bright_RR": 200,
+      "bright_RG": 0,
+      "bright_RB": 100,
+      "bright_GR": 100,
+      "bright_GG": 200,
+      "bright_GB": 0
+    }
+  ],
+  "imagePath": "001241442e4f0.jpg",
+  "imageHeight": 1944,
+  "imageWidth": 2592
+}

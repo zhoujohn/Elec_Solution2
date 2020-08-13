@@ -52,10 +52,17 @@ def region_detect(i,j,frame,target_matrix,send_data):
     #print j,counter,m0,m1,m11,m12
     rlevel = target_matrix[j][2]
     glevel = target_matrix[j][3]
-    y0 = m11[1]
-    y1 = m12[1]
-    x0 = m11[0]
-    x1 = m12[0]
+    rrbright = target_matrix[j][4]
+    rgbright = target_matrix[j][5]
+    rbbright = target_matrix[j][6]
+    grbright = target_matrix[j][7]
+    ggbright = target_matrix[j][8]
+    gbbright = target_matrix[j][9]
+    #print j,counter,m0,m1,m11,m12
+    y0 = int(m11[1])
+    y1 = int(m12[1])
+    x0 = int(m11[0])
+    x1 = int(m12[0])
     #print y0,y1,x0,x1
     cropped = frame[y0:y1,x0:x1]   #[y0:y1, x0:x1]
     r_data = 0;
@@ -86,7 +93,7 @@ def region_detect(i,j,frame,target_matrix,send_data):
             if tmp == None:
                 tmp = 0
             r_data = tmp
-            x_data = detectsingle(cropped,"GREEN",rlevel)
+            x_data = detectsingle(cropped,"GREEN",rlevel,rrbright,rgbright,rbbright)
             if x_data[0][1] == 'On':
                 r_data = r_data + 12
             elif x_data[0][1] == 'Off':
@@ -99,7 +106,7 @@ def region_detect(i,j,frame,target_matrix,send_data):
             if tmp == None:
                 tmp = 0
             r_data = tmp
-            x_data = detectsingle(cropped,"RED",rlevel)
+            x_data = detectsingle(cropped,"RED",rlevel,rrbright,rgbright,rbbright)
             if len(x_data) > 0:
                 if x_data[0][1] == 'On':
                     r_data = r_data + 3
@@ -113,7 +120,7 @@ def region_detect(i,j,frame,target_matrix,send_data):
             if tmp == None:
                 tmp = 0
             r_data = tmp
-            x_data = detectsingle(cropped,"YELLOW",rlevel)
+            x_data = detectsingle(cropped,"YELLOW",rlevel,rrbright,rgbright,rbbright)
             if len(x_data) > 0:
                 if x_data[0][1] == 'On':
                     r_data = r_data + 48
@@ -123,7 +130,7 @@ def region_detect(i,j,frame,target_matrix,send_data):
                     r_data = r_data
         else:
             r_data = 0
-            x_data = detectstatus(cropped,rlevel,glevel)
+            x_data = detectstatus(cropped,rlevel,glevel,rrbright,rgbright,rbbright,grbright,ggbright,gbbright)
             if x_data is not None:
                 x = len(x_data)
                 y = 0
@@ -147,7 +154,7 @@ def region_detect(i,j,frame,target_matrix,send_data):
                             r_data = r_data
                     x = x - 1
                     y = y + 1
-                     #print ("lamp status data is %d", (r_data))
+                    #print ("lamp status data is %d", (r_data))
             else:
                 r_data = 0
     return m0, r_data
@@ -173,7 +180,7 @@ def read_anno_config(fileurl):
         load_dict = json.load(load_f)
         load_dict1 = load_dict["shapes"]
         for val in load_dict1:
-            element = [val["label"],val["points"],val["level_R"],val["level_G"]]
+            element = [val["label"],val["points"],val["level_R"],val["level_G"],val["bright_RR"],val["bright_RG"],val["bright_RB"],val["bright_GR"],val["bright_GG"],val["bright_GB"]]
             matrix.append(element)
             counter = counter + 1
             #print (val)
