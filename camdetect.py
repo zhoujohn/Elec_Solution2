@@ -227,10 +227,10 @@ def save_image_region(frame, element, urn):
     m11 = m1[0]
     m12 = m1[1]
 
-    y0 = m11[1]
-    y1 = m12[1]
-    x0 = m11[0]
-    x1 = m12[0]
+    y0 = int(m11[1])
+    y1 = int(m12[1])
+    x0 = int(m11[0])
+    x1 = int(m12[0])
     #print y0,y1,x0,x1
     img = frame[y0:y1,x0:x1]
     isExists=os.path.exists('./exception/' + urn)

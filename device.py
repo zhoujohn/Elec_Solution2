@@ -138,6 +138,8 @@ class Device(object):
         detect_result2 = {}
         detect_result3 = {}
         detect_result4 = {}
+
+        detect_last_valid = {}
         
         no_frame_index = 0
         # capture and detect
@@ -170,29 +172,29 @@ class Device(object):
             if detect_result == detect_result1 and detect_result == detect_result2 and detect_result == detect_result3 and detect_result == detect_result4:
                 print('*****************XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%s capture end %d. duration:%d' % (ip, time.time(), time.time())) # - start))
                 reporter.publish('cam_test', detect_result)
+                # verify the difference between present result and previous result
+                if detect_result != detect_last_valid and len(detect_last_valid) != 0:
+                    # find the different ones
+                    for ele in detect_result:
+                        v1 = detect_result[ele]
+                        v2 = detect_last_valid[ele]
+                        if v2 != v1:
+                            # check r,g,y difference
+                            if v2&0x03 != v1&0x03:
+                                save_image_from_diff(frame, matrix, ele, 0, local_urn)
+                            if v2&0x0c != v1&0x0c:
+                                save_image_from_diff(frame, matrix, ele, 1, local_urn)
+                            if v2&0x30 != v1&0x30:
+                                save_image_from_diff(frame, matrix, ele, 2, local_urn)
+                            if v2&0xc0 != v1&0xc0:
+                                save_image_from_diff(frame, matrix, ele, 3, local_urn)
+                        #print (v,v1)
+                detect_last_valid = detect_result
             detect_result4 = detect_result3
             detect_result3 = detect_result2
             detect_result2 = detect_result1
             detect_result1 = detect_result
 
-            # verify the difference between present result and previous result
-            if detect_result1 != detect_result2 and len(detect_result2) != 0:
-                # find the different ones
-                for ele in detect_result1:
-                    v1 = detect_result1[ele]
-                    v2 = detect_result2[ele]
-                    if v2 != v1:
-                        # check r,g,y difference
-                        if v2&0x03 != v1&0x03:
-                            save_image_from_diff(frame, matrix, ele, 0, local_urn)
-                        if v2&0x0c != v1&0x0c:
-                            save_image_from_diff(frame, matrix, ele, 1, local_urn)
-                        if v2&0x30 != v1&0x30:
-                            save_image_from_diff(frame, matrix, ele, 2, local_urn)
-                        if v2&0xc0 != v1&0xc0:
-                            save_image_from_diff(frame, matrix, ele, 3, local_urn)
-                    #print (v,v1)
-            
             time.sleep(3)
 
         
