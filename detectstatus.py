@@ -87,7 +87,7 @@ def detect_Lockgate_Status(inImg, rlevel, draw=False):
     #cv2.waitKey(5)
     #time.sleep(2)
     #draw = True
-    contours,hierarchy = cv2.findContours(th2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    binary,contours,hierarchy = cv2.findContours(th2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     if len(contours) > 0:
         for cnt in contours:
