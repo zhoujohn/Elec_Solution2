@@ -1,5 +1,6 @@
 import os
 import time
+import datetime
 from onvif import ONVIFCamera
 import urllib.parse as url
 from multiprocessing import Process
@@ -170,7 +171,8 @@ class Device(object):
             detect_result = entry_detect(frame, num, matrix)
             #print(detect_result)
             if detect_result == detect_result1 and detect_result == detect_result2 and detect_result == detect_result3 and detect_result == detect_result4:
-                print('*****************XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%s capture end %d. duration:%d' % (ip, time.time(), time.time())) # - start))
+                print('***%s capture end.\n' % (datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+                print(detect_result)
                 reporter.publish('cam_test', detect_result)
                 # verify the difference between present result and previous result
                 if detect_result != detect_last_valid and len(detect_last_valid) != 0:
