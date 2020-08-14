@@ -183,13 +183,13 @@ class Device(object):
                         if v2 != v1:
                             # check r,g,y difference
                             if v2&0x03 != v1&0x03:
-                                save_image_from_diff(frame, matrix, ele, 0, local_urn)
+                                save_image_from_diff(frame, matrix, ele, 0, local_urn, '_R', str(v1&0x03), str(v2&0x03))
                             if v2&0x0c != v1&0x0c:
-                                save_image_from_diff(frame, matrix, ele, 1, local_urn)
+                                save_image_from_diff(frame, matrix, ele, 1, local_urn, '_G', str(v1&0x0c), str(v2&0x0c))
                             if v2&0x30 != v1&0x30:
-                                save_image_from_diff(frame, matrix, ele, 2, local_urn)
+                                save_image_from_diff(frame, matrix, ele, 2, local_urn, '_Y', str(v1&0x30), str(v2&0x30))
                             if v2&0xc0 != v1&0xc0:
-                                save_image_from_diff(frame, matrix, ele, 3, local_urn)
+                                save_image_from_diff(frame, matrix, ele, 3, local_urn, '_H', str(v1&0xc0), str(v2&0xc0))
                         #print (v,v1)
                 detect_last_valid = detect_result
             detect_result4 = detect_result3
