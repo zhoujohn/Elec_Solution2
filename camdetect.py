@@ -221,7 +221,7 @@ def release_detect():
     cv2.destroyAllWindows()
     time.sleep(2)   #delay 2s
 
-def save_image_region(frame, element, urn):
+def save_image_region(frame, element, urn, ltype, now, previous):
     name = element[0]
     m1 = element[1]
     m11 = m1[0]
@@ -236,22 +236,22 @@ def save_image_region(frame, element, urn):
     isExists=os.path.exists('./exception/' + urn)
     if not isExists:
         os.mkdir('./exception/' + urn)
-    filename = './exception/' + urn + '/' + name + datetime.datetime.now().strftime('%Y%m%d%H-%M-%S') + '.jpg'
+    filename = './exception/' + urn + '/' + name + datetime.datetime.now().strftime('%Y%m%d%H-%M-%S') + ltype + now + previous + '.jpg'
     cv2.imwrite(filename, img)
 
 
-def save_image_from_diff(jpgframe, target_matrix, element, index, urn):
+def save_image_from_diff(jpgframe, target_matrix, element, index, urn, ltype, now, previous):
     for ele in target_matrix:
         if index == 0:
             if ele[0] == element or ele[0] == element+'.RED':
-                save_image_region(jpgframe, ele, urn)
+                save_image_region(jpgframe, ele, urn, ltype, now, previous)
         elif index == 1:
             if ele[0] == element or ele[0] == element+'.GREEN':
-                save_image_region(jpgframe, ele, urn)
+                save_image_region(jpgframe, ele, urn, ltype, now, previous)
         elif index == 2:
             if ele[0] == element or ele[0] == element+'.YELLOW':
-                save_image_region(jpgframe, ele, urn)
+                save_image_region(jpgframe, ele, urn, ltype, now, previous)
         elif index == 3:
             if ele[0] == element or ele[0] == element+'.HANDLE':
-                save_image_region(jpgframe, ele, urn)
+                save_image_region(jpgframe, ele, urn, ltype, now, previous)
     return
