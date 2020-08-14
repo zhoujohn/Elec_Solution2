@@ -168,7 +168,7 @@ class Device(object):
             #cv2.imwrite(name, frame)
 
             detect_result = entry_detect(frame, num, matrix)
-            print(detect_result)
+            #print(detect_result)
             if detect_result == detect_result1 and detect_result == detect_result2 and detect_result == detect_result3 and detect_result == detect_result4:
                 print('*****************XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX%s capture end %d. duration:%d' % (ip, time.time(), time.time())) # - start))
                 reporter.publish('cam_test', detect_result)
